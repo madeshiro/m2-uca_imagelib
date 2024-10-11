@@ -43,7 +43,7 @@ int main() {
         //ideal: (103,73,69) (136,119,118)
 
     std::vector<cv::Mat> images;
-    //load all from the folder
+
     cv::String path = "../data/*.png";
     std::vector<cv::String> fn;
     cv::glob(path, fn, false);
@@ -60,14 +60,50 @@ int main() {
         if(i >= images.size()){
             i = 0;
         }
-        //pick one image per iteration
+
         cv::Mat image = images[i];
 
         cv::Mat masked = ElimColor(image, cv::Scalar(80, 100, 100), cv::Scalar(100, 255, 255), 5, 5);
         cv::inRange(masked, cv::Scalar(103,73,69), cv::Scalar(136,119,118), ranged);
 
-        cv::imshow("Image", ranged);
-        if(cv::waitKey(1) == 27){
+        cv::Mat binary;
+        cv::threshold(ranged, binary, 0, 255, cv::THRESH_BINARY);
+
+        cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
+        cv::morphologyEx(binary, binary, cv::MORPH_OPEN, kernel);
+
+        std::vector<std::vector<cv::Point>> contours;
+        cv::findContours(binary, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+
+        for(int i = 0; i < contours.size(); i++){
+            cv::Rect rect = cv::boundingRect(contours[i]);
+            for(int j = 0; j < contours.size(); j++){
+                if(i != j){
+                    cv::Rect rect2 = cv::boundingRect(contours[j]);
+                    if(rect.x < rect2.x + rect2.width && rect.x + rect.width > rect2.x && rect.y < rect2.y + rect2.height && rect.y + rect.height > rect2.y){
+                        if(rect.width * rect.height > rect2.width * rect2.height){
+                            contours.erase(contours.begin() + j);
+                        }else{
+                            contours.erase(contours.begin() + i);
+                        }
+                    }
+                }
+            }
+        }
+        cv::Mat image2 = image.clone();
+
+        for(int i = 0; i < contours.size(); i++){
+            cv::Scalar color = cv::Scalar(0, 255, 0);
+            if(cv::contourArea(contours[i]) < 300){
+                color = cv::Scalar(0, 0, 255);
+            }
+
+            cv::Rect rect = cv::boundingRect(contours[i]);
+            cv::rectangle(image2, rect, color, 2);
+        }
+
+        cv::imshow("Image", image2);
+        if(cv::waitKey(3000) == 27){
             break;
         }
     }
