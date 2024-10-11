@@ -1,6 +1,6 @@
 ```mermaid
 ---
-title: Animal example
+title: Class diagram
 ---
 classDiagram
     class LineDetector{
@@ -10,7 +10,10 @@ classDiagram
     }
 
     class Plant{
-        + center
+        + vec2 center
+        + vec2 position
+        + vec2 boundingBox
+        + Mat plantImg
         +& mask
     }
 
