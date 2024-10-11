@@ -8,7 +8,7 @@
 #                                                                              #
 ################################################################################
 cmake_minimum_required(VERSION 3.23 FATAL_ERROR)
-project(CVforAgriculture CXX VERSION 0.1)
+project(CVforAgriculture LANGUAGES CXX VERSION 0.1)
 
 # Project configs
 set(CMAKE_CXX_STANDARD 11)
@@ -33,4 +33,4 @@ set(${TARGET}_HEADERS
 
 # Targets
 add_executable(${TARGET} ${${TARGET}_SOURCES} ${${TARGET}_HEADERS})
-target_include_directories(${TARGET} ${OpenCV_LIBS})
+target_link_libraries(${TARGET} ${OpenCV_LIBS})
