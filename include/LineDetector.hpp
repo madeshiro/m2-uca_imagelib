@@ -1,16 +1,64 @@
+//------------------------------------------------------------------------------
+//
+// File:        LineDetector.hpp
+// Description: Definition of LineDetector (OpenCV hough transformation)
+//
+//------------------------------------------------------------------------------
+//
+// File generated on Oct 2024 by Rin Baudelet
+//------------------------------------------------------------------------------
 #ifndef LINE_DETECTOR_HPP
 #define LINE_DETECTOR_HPP
 
 #include <vector>
 #include <opencv2/opencv.hpp>
 
-class LineDetector {
-public:
-    cv::Mat filterLinesColor(const cv::Mat& in); // Filtrer les couleurs de ligne
+namespace idl // Images Development Library 
+{
+    // Forward declaration
+    class ProcessingFactory;
 
-    LineDetector();				 // Constructeurs
-    std::vector<cv::Vec2d> getCurLines();        // Retourner les lignes détectées
-    cv::Vec2d getCenter();                       // Retourner le centre des lignes détectées
-};
+    class LineDetector 
+    {
+    public:
+        // Disallow copy
+        LineDetector(const LineDetector&) = delete;
+        LineDetector& operator =(const LineDetector&) = delete;
+
+        // Disallow move
+        LineDetector(LineDetector&&) noexcept = delete;
+        LineDetector& operator =(LineDetector&&) noexcept = delete;
+
+        ~LineDetector() noexcept = default;
+    //protected:
+        // Disable creation from external classes except factory
+        /**
+         * Create a line detector from an image to analyze. 
+         * @param iImgSrc the image to detect lines from. 
+         */
+        LineDetector(const cv::Mat& iImgSrc);
+    public:
+        /** 
+         * Get detected lines using hough transformation.
+         * @return a list of vec4i (x0, y0, x1, y1) 
+         */
+        std::vector<cv::Vec4i> getCurLines() const;     
+
+        /**
+         * For debug purpose. 
+         * Display the line onto the origin image. 
+         */
+        void showResults() const;           
+    private:
+        // Internal functions
+        cv::Mat filterLinesColor(const cv::Mat& iImg); // Filtrer les couleurs de ligne
+
+        // Attributes
+        const cv::Mat& _img; //< reference image to analyze
+
+        // Factory
+        friend class idl::ProcessingFactory;
+    };
+} // namespace idl
 
 #endif // LINE_DETECTOR_HPP
