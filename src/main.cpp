@@ -33,7 +33,7 @@ int main()
 
     cv::Mat ranged;
     int i = 0;
-    while(i <= images.size())
+    while(1)
     {    
         std::vector<idl::Plant> plants = detector.detectPlants(images[i]);
         cv::Mat image2 = images[i].clone();
