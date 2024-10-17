@@ -42,7 +42,18 @@ namespace idl // Images Development Library
          * Get detected lines using hough transformation.
          * @return a list of vec4i (x0, y0, x1, y1) 
          */
-        std::vector<cv::Vec4i> getCurLines() const;     
+        std::vector<cv::Vec4i> getCurLines() const;  
+
+        /**
+         * Computes intersection between lines
+         */
+        std::vector<cv::Point> getIntersections() const;   
+
+        /**
+         * Get the intersection by computing the mean points between every detect intersections
+         * @see LineDetector::getIntersections()
+         */
+        cv::Point getIntersection() const;
 
         /**
          * For debug purpose. 
@@ -51,6 +62,8 @@ namespace idl // Images Development Library
         void showResults() const;           
     private:
         // Internal functions
+        static cv::Vec3f toLinearEquation(const cv::Vec4i&);
+        static float computeAngle(const cv::Vec4i& iLine1, const cv::Vec4i& iLine2);
         cv::Mat filterLinesColor(const cv::Mat& iImg); // Filtrer les couleurs de ligne
 
         // Attributes
