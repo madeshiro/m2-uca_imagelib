@@ -35,7 +35,6 @@ set(${TARGET}_HEADERS
     include/JetPositionChecker.hpp
     include/LaserBehavior.hpp
     include/LineDetector.hpp
-    include/Main.hpp
     include/Plant.hpp
     include/PlantDetector.hpp
     include/ProcessingFactory.hpp
