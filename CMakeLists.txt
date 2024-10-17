@@ -27,6 +27,7 @@ set(${TARGET}_SOURCES
     src/main.cpp
     src/LineDetector.cpp
     src/PlantDetector.cpp
+    src/ImagePreProcessor.cpp
 )
 
 set(${TARGET}_HEADERS

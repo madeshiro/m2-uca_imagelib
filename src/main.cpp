@@ -3,6 +3,7 @@
 #include <LineDetector.hpp>
 #include <Plant.hpp>
 #include <PlantDetector.hpp>
+#include <ImagePreProcessor.hpp>
 
 using namespace cv;
 
@@ -19,34 +20,34 @@ int main()
     std::vector<cv::Mat> images;
 
     cv::String path = "../data/*.png";
-    std::vector<cv::String> fn;
-    cv::glob(path, fn, false);
-    for(size_t k = 0; k < fn.size(); k++){
-        images.push_back(cv::imread(fn[k], cv::IMREAD_COLOR));
+    std::vector<cv::String> dataFileNames;
+    cv::glob(path, dataFileNames, false);
+    for(size_t k = 0; k < dataFileNames.size(); k++){
+    	cv::Mat image = cv::imread(dataFileNames[k], cv::IMREAD_COLOR);
+    	image = ImagePreProcessor::process(image);
+        images.push_back(image);
     }
 
     cv::namedWindow("Image", cv::WINDOW_AUTOSIZE);
 
     cv::Mat ranged;
     int i = 0;
-    while(1)
+    while(i <= images.size())
     {    
         std::vector<idl::Plant> plants = detector.detectPlants(images[i]);
         cv::Mat image2 = images[i].clone();
 
-        for(int j = 0; j < plants.size(); j++)
-        {
+        for(int j = 0; j < plants.size(); j++){
             cv::rectangle(image2, plants[j].boundingBox, plants[j].plantSpecies == idl::Species::wheat ? cv::Scalar(255,0,0) : cv::Scalar(0,255,0), 2);
         }
 
         cv::imshow("Image", image2);
-        if(cv::waitKey(3000) == 27)
-        {
+        if(cv::waitKey(3000) == 27){
             break;
         }
+
         i++;
-        if(i >= images.size())
-        {
+        if(i >= images.size()){
             i = 0;
         }
     }

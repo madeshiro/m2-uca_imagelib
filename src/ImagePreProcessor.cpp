@@ -10,7 +10,7 @@ cv::Mat ImagePreProcessor::applyGrayscale(const cv::Mat& img) {
             return img;
         }
     } catch (const cv::Exception& e) {
-        std::cerr << "Error convertion in Grayscale : " << e.what() << std::endl;
+        std::cerr << "Error : convertion in Grayscale : " << e.what() << std::endl;
         return img;
     }
     return gray;
@@ -72,19 +72,6 @@ cv::Mat ImagePreProcessor::applyThresholding(const cv::Mat& img, double thresh, 
     return output;
 }
 
-cv::Mat ImagePreProcessor::applyEdgeDetection(const cv::Mat& img, double lowThreshold, double highThreshold) {
-    cv::Mat gray, edges;
-
-    if (img.channels() == 3) {
-        gray = ImagePreProcessor::applyGrayscale(img);
-    } else {
-        gray = img;
-    }
-
-    cv::Canny(gray, edges, lowThreshold, highThreshold);
-    return edges;
-}
-
 cv::Mat ImagePreProcessor::applyNoiseCorrection(const cv::Mat& img, float h) {
     cv::Mat output;
 
@@ -103,8 +90,6 @@ cv::Mat ImagePreProcessor::applyNoiseCorrection(const cv::Mat& img, float h) {
     return output;
 }
 
-
-
 //mux for choose PreprocessingType
 cv::Mat ImagePreProcessor::process(const cv::Mat& img, PreprocessingType type) {
     switch(type) {
@@ -114,8 +99,6 @@ cv::Mat ImagePreProcessor::process(const cv::Mat& img, PreprocessingType type) {
             return ImagePreProcessor::applyMedianBlur(img, 5);
         case PreprocessingType::Thresholding:
             return ImagePreProcessor::applyThresholding(img, 128, 255);
-        case PreprocessingType::EdgeDetection:
-            return ImagePreProcessor::applyEdgeDetection(img, 100, 200);
         case PreprocessingType::HistogramEqualization:
             return ImagePreProcessor::applyHistogramEqualization(img);
         case PreprocessingType::NoiseCorrection:
@@ -132,9 +115,13 @@ cv::Mat ImagePreProcessor::process(const cv::Mat& img) {
         return img;
     }
     cv::Mat imgNew = img;
+    /*
     imgNew = ImagePreProcessor::applyGrayscale(imgNew);
     imgNew = ImagePreProcessor::applyMedianBlur(imgNew, 5);
     imgNew = ImagePreProcessor::applyHistogramEqualization(imgNew);
+    */
+
+    imgNew = ImagePreProcessor::applyNoiseCorrection(imgNew, 10);
 
     return imgNew;                                                
 }
