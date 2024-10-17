@@ -8,4 +8,4 @@ enum class laserBehavior
     onWheat
 };
 
-#endif
+#endif // LASER_BEHAVIOR_HPP

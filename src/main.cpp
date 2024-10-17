@@ -24,7 +24,7 @@ int main()
     cv::glob(path, dataFileNames, false);
     for(size_t k = 0; k < dataFileNames.size(); k++){
     	cv::Mat image = cv::imread(dataFileNames[k], cv::IMREAD_COLOR);
-    	image = ImagePreProcessor::process(image);
+    	image = idl::ImagePreProcessor::process(image);
         images.push_back(image);
     }
 

@@ -18,4 +18,4 @@ namespace idl
     };
 }
 
-#endif
+#endif // PROCESSING_FACTORY_HPP

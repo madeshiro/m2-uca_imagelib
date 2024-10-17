@@ -10,4 +10,4 @@ namespace idl
     };
 }
 
-#endif 
+#endif // SPECIES_HPP
