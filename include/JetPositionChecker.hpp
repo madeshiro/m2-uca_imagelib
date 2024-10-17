@@ -2,7 +2,7 @@
 #define JET_POSITION_CHECKER_HPP
 
 #include "Plant.hpp"
-#include "laserBehavior.hpp"
+#include "LaserBehavior.hpp"
 #include <opencv2/opencv.hpp>
 
 class JetPositionChecker {

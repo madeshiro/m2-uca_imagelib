@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/flklein/M_flklein/M2/Lib Dev Img/m2-uca_imagelib/build",
+  "command": "/usr/bin/c++  -isystem /usr/include/opencv4 -g -std=gnu++11 -o CMakeFiles/CVFORAGRICULTURE.dir/src/main.cpp.o -c \"/home/flklein/M_flklein/M2/Lib Dev Img/m2-uca_imagelib/src/main.cpp\"",
+  "file": "/home/flklein/M_flklein/M2/Lib Dev Img/m2-uca_imagelib/src/main.cpp"
+},
+{
+  "directory": "/home/flklein/M_flklein/M2/Lib Dev Img/m2-uca_imagelib/build",
+  "command": "/usr/bin/c++  -isystem /usr/include/opencv4 -g -std=gnu++11 -o CMakeFiles/CVFORAGRICULTURE.dir/src/LineDetector.cpp.o -c \"/home/flklein/M_flklein/M2/Lib Dev Img/m2-uca_imagelib/src/LineDetector.cpp\"",
+  "file": "/home/flklein/M_flklein/M2/Lib Dev Img/m2-uca_imagelib/src/LineDetector.cpp"
+}
+]
