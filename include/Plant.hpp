@@ -2,7 +2,7 @@
 #define PLANT_HPP
 
 #include <opencv2/opencv.hpp>
-#include "species.hpp"
+#include "../include/Species.hpp"
 
 class Plant {
 public:

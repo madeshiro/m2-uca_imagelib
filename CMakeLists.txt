@@ -25,6 +25,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 set(${TARGET}_SOURCES
     src/main.cpp
+    src/plantDetector.cpp
 )
 
 set(${TARGET}_HEADERS
