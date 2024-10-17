@@ -3,9 +3,9 @@
 
 enum class LaserBehavior 
 {
+    onNothing,
     onAdventis,
     onWheat,
-    onNothing,
     notDetected
 };
 
