@@ -76,6 +76,8 @@ std::vector<Plant> PlantDetector::detectPlants(const cv::Mat& img){
         plant.center = cv::Vec2d(plant.boundingBox.x + plant.boundingBox.width / 2, plant.boundingBox.y + plant.boundingBox.height / 2);
 
         plant.plantSpecies = cv::contourArea(contours[i]) < 500 ? species::advantis : species::wheat;
+
+        plants.push_back(plant);
     }
     return plants;
 }
