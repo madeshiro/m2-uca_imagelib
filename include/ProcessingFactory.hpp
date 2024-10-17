@@ -7,12 +7,15 @@
 #include "ImagePreProcessor.hpp"
 #include "JetPositionChecker.hpp"
 
-class ProcessingFactory {
-private:
-    cv::Mat img;              // Image à traiter
-    cv::Point centerLaser;    // Centre du laser
-public:
-    void process(const cv::Mat& img); // Méthode principale de traitement
-};
+namespace idl
+{
+    class ProcessingFactory {
+    private:
+        cv::Mat img;              // Image à traiter
+        cv::Point centerLaser;    // Centre du laser
+    public:
+        void process(const cv::Mat& img); // Méthode principale de traitement
+    };
+}
 
 #endif // PROCESSING_FACTORY_HPP

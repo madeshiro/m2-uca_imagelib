@@ -14,31 +14,29 @@ project(CVforAgriculture LANGUAGES CXX VERSION 0.1)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-
-
 # Define target's name
 string(TOUPPER "${PROJECT_NAME}" TARGET)
 
 # Dependencies
 find_package(OpenCV REQUIRED)
-include_directories(${OpenCV_INCLUDE_DIRS})
+include_directories(include ${OpenCV_INCLUDE_DIRS})
 
 # Project's sources
 
 set(${TARGET}_SOURCES
-    ../src/main.cpp
-    ../src/LineDetector.cpp
+    src/main.cpp
+    src/LineDetector.cpp
+    src/PlantDetector.cpp
 )
 
 set(${TARGET}_HEADERS
-    include/ImagePreProcessor.hpp
-    include/JetPositionChecker.hpp
-    include/LaserBehavior.hpp
+    include/ProcessingFactory.hpp
     include/LineDetector.hpp
-    include/Main.hpp
+    include/LaserBehavior.hpp
+    include/JetPositionChecker.hpp
+    include/ImagePreProcessor.hpp
     include/Plant.hpp
     include/PlantDetector.hpp
-    include/ProcessingFactory.hpp
     include/Species.hpp
 )
 
