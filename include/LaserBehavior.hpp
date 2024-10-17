@@ -1,11 +1,12 @@
 #ifndef LASER_BEHAVIOR_HPP
 #define LASER_BEHAVIOR_HPP
 
-enum class laserBehavior 
+enum class LaserBehavior 
 {
-    onNothing,
     onAdventis,
-    onWheat
+    onWheat,
+    onNothing,
+    notDetected
 };
 
 #endif // LASER_BEHAVIOR_HPP

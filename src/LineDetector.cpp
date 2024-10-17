@@ -130,11 +130,15 @@ namespace idl
 
     cv::Point LineDetector::getIntersection() const 
     {
-        cv::Point oPoint;
+        cv::Point oPoint {-1, -1};
         auto points = getIntersections();
         int xTotal = 0, yTotal = 0;
         int ptSize = static_cast<int>(points.size());
         
+        if (0 == ptSize)
+        {
+            return oPoint;
+        }
 
         for (const auto& pt : points)
         {
@@ -143,6 +147,11 @@ namespace idl
         }
 
         return cv::Point {xTotal / ptSize, yTotal / ptSize};
+    }
+
+    bool LineDetector::hasIntersection() const 
+    {
+        return !getIntersections().empty();
     }
 
     void LineDetector::showResults() const 
