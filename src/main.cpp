@@ -69,8 +69,12 @@ int main() {
         cv::Mat binary;
         cv::threshold(ranged, binary, 0, 255, cv::THRESH_BINARY);
 
-        cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
+        cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(2, 2));
         cv::morphologyEx(binary, binary, cv::MORPH_OPEN, kernel);
+
+        //grow the blobs
+        cv::dilate(binary, binary, kernel);
+        cv::dilate(binary, binary, kernel);
 
         std::vector<std::vector<cv::Point>> contours;
         cv::findContours(binary, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
@@ -94,7 +98,7 @@ int main() {
 
         for(int i = 0; i < contours.size(); i++){
             cv::Scalar color = cv::Scalar(0, 255, 0);
-            if(cv::contourArea(contours[i]) < 300){
+            if(cv::contourArea(contours[i]) < 500){
                 color = cv::Scalar(0, 0, 255);
             }
 
