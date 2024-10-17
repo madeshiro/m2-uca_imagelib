@@ -16,18 +16,14 @@ cv::Mat LineDetector::filterLinesColor(const cv::Mat& in){
         {
             cv::Vec3b pixel = imgLab.at<cv::Vec3b>(cv::Point{i,j});
             double distance = abs(targetColor[0]-pixel[0]) + abs(targetColor[1]-pixel[1]) + abs(targetColor[2]-pixel[2]);
-            //std::cout << static_cast<int>(pixel[0]) << std::endl;
-            //std::cout << static_cast<int>(pixel[1])  << std::endl;
-            //std::cout << static_cast<int>(pixel[2])  << std::endl;
-            //std::cout << distance << std::endl;
-            //std::cout << "//" << std::endl;
+
             if(distance<threshold){
                 out.at<uchar>(cv::Point{i,j})=255;
-            }else{
+            } else {
                 out.at<uchar>(cv::Point{i,j})=0;
             }
         }
     }
-    //cv::imshow("imgLab",imgLab);
+    
     return out;
 }
