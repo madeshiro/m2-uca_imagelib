@@ -16,6 +16,7 @@ namespace idl
 
             if (iPlant.mask.at<bool>(relativeJet))
             {
+                // Retrieve the laser behavior according to the targeted plant
                 switch (iPlant.plantSpecies)
                 {
                     case Species::wheat:

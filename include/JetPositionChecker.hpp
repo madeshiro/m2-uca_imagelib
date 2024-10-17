@@ -38,9 +38,21 @@ namespace idl
         JetPositionChecker(const std::vector<Plant>& iPlants,
             const LineDetector& iLineDetector);
     
+        /**
+         * Compute the laser behaviour's state. 
+         * @return the current laser state according to its position. 
+         */
         LaserBehavior computeState() const;
 
-        static LaserBehavior isOnPlant(const Plant& p, const cv::Point& jet); 
+        /**
+         * Retrieve the laser behavior according to a plant using its bounding box and its mask.
+         * 
+         * @param iPlant the plant to test with the laser
+         * @param iJet the laser location point
+         * 
+         * @return the laser behavior relatively of the provided plant.
+         */
+        static LaserBehavior isOnPlant(const Plant& iPlant, const cv::Point& iJet); 
     private:
         const LineDetector& _lineDetector;
         std::vector<Plant> _plants;
