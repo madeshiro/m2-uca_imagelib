@@ -18,6 +18,9 @@ namespace idl // Images Development Library
     // Forward declaration
     class ProcessingFactory;
 
+    /**
+     * Module to detect the laser line from robot camera images. 
+     */
     class LineDetector 
     {
     public:
@@ -30,7 +33,7 @@ namespace idl // Images Development Library
         LineDetector& operator =(LineDetector&&) noexcept = delete;
 
         ~LineDetector() noexcept = default;
-    //protected:
+    protected:
         // Disable creation from external classes except factory
         /**
          * Create a line detector from an image to analyze. 
@@ -45,7 +48,8 @@ namespace idl // Images Development Library
         std::vector<cv::Vec4i> getCurLines() const;  
 
         /**
-         * Computes intersection between lines
+         * Computes intersection between lines.
+         * @return a list of points representing the detected intersections
          */
         std::vector<cv::Point> getIntersections() const;   
 
@@ -62,9 +66,27 @@ namespace idl // Images Development Library
         void showResults() const;           
     private:
         // Internal functions
-        static cv::Vec3f toLinearEquation(const cv::Vec4i&);
+
+        /**
+         * Transform a vectorial line description (x1,y1,x2,y2) to a linear equation under the form
+         * of ax+by+c with returned result a vec3 (a, b, c)
+         * 
+         * @param iLine the line to convert to its linear equation
+         * @return the constant expression of the linear equation (a, b, c) 
+         */
+        static cv::Vec3f toLinearEquation(const cv::Vec4i& iLine);
+        /**
+         * Compute the angle between two lines.
+         * @param iLine1 the first line to compare
+         * @param iLine2 the second line to compare
+         * @return the angle between the provided lines, in radian. 
+         */
         static float computeAngle(const cv::Vec4i& iLine1, const cv::Vec4i& iLine2);
-        cv::Mat filterLinesColor(const cv::Mat& iImg); // Filtrer les couleurs de ligne
+        /**
+         * Filter the color using the LA method to improve line detection. 
+         * Replace the simple color to gray convertion to use in a Canny edge transform.
+         */
+        static cv::Mat filterLinesColor(const cv::Mat& iImg);
 
         // Attributes
         const cv::Mat& _img; //< reference image to analyze

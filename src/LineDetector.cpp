@@ -43,7 +43,7 @@ namespace idl
         cv::Mat dst, cdst;  
 
         // Use Canny for edge detection
-        cvtColor(_img, dst, cv::COLOR_BGR2GRAY);
+        dst = filterLinesColor(_img);
         cv::Canny(dst, dst, 50, 300, 3, true);
         
         // Apply hough transformation
