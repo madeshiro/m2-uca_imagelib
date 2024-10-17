@@ -27,6 +27,7 @@ set(${TARGET}_SOURCES
     src/main.cpp
     src/LineDetector.cpp
     src/PlantDetector.cpp
+    src/ImagePreProcessor.cpp
 )
 
 set(${TARGET}_HEADERS
@@ -43,3 +44,4 @@ set(${TARGET}_HEADERS
 # Targets
 add_executable(${TARGET} ${${TARGET}_SOURCES} ${${TARGET}_HEADERS})
 target_link_libraries(${TARGET} ${OpenCV_LIBS})
+

@@ -10,8 +10,8 @@ namespace idl
     class PlantDetector 
     {
     public:
-        std::vector<Plant> detectPlants(const cv::Mat& img); // Détection des plantes
+        std::vector<Plant> detectPlants(const cv::Mat& img);
     };
 }
 
-#endif // PLANT_DETECTOR_HPP
+#endif

@@ -11,10 +11,10 @@ namespace idl
 {
     class ProcessingFactory {
     private:
-        cv::Mat img;              // Image à traiter
-        cv::Point centerLaser;    // Centre du laser
+        cv::Mat img;             
+        cv::Point centerLaser;  
     public:
-        void process(const cv::Mat& img); // Méthode principale de traitement
+        void process(const cv::Mat& img);
     };
 }
 
