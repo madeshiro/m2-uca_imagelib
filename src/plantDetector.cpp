@@ -14,7 +14,7 @@ cv::Mat PlantDetector::ElimColor(cv::Mat in, cv::Scalar min, cv::Scalar max, int
 
     //apply a mask to the image
     cv::Mat masked;
-    //fatten the mask
+    //thicken the mask
     cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(morph_size, morph_size));
     cv::dilate(result, result, kernel);
     //invert mask
@@ -75,7 +75,7 @@ std::vector<Plant> PlantDetector::detectPlants(const cv::Mat& img){
         plant.position = cv::Vec2d(plant.boundingBox.x, plant.boundingBox.y);
         plant.center = cv::Vec2d(plant.boundingBox.x + plant.boundingBox.width / 2, plant.boundingBox.y + plant.boundingBox.height / 2);
 
-        plant.plantSpecies = cv::contourArea(contours[i]) < 500 ? species::weed : species::wheat;
+        plant.plantSpecies = cv::contourArea(contours[i]) < 500 ? species::advantis : species::wheat;
     }
     return plants;
 }
