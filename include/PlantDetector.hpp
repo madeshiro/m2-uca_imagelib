@@ -5,9 +5,13 @@
 #include <vector>
 #include "Plant.hpp"
 
-class PlantDetector {
-public:
-    std::vector<Plant> detectPlants(const cv::Mat& img); // Détection des plantes
-};
+namespace idl 
+{
+    class PlantDetector 
+    {
+    public:
+        std::vector<Plant> detectPlants(const cv::Mat& img); // Détection des plantes
+    };
+}
 
 #endif // PLANT_DETECTOR_HPP
