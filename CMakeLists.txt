@@ -7,12 +7,14 @@
 # Date: Oct. 2024                                                              #
 #                                                                              #
 ################################################################################
-cmake_minimum_required(VERSION 3.23 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.22 FATAL_ERROR)
 project(CVforAgriculture LANGUAGES CXX VERSION 0.1)
 
 # Project configs
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+
 
 # Define target's name
 string(TOUPPER "${PROJECT_NAME}" TARGET)
@@ -24,12 +26,20 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 # Project's sources
 
 set(${TARGET}_SOURCES
-    src/main.cpp
-    src/plantDetector.cpp
+    ../src/main.cpp
+    ../src/LineDetector.cpp
 )
 
 set(${TARGET}_HEADERS
-    
+    include/ImagePreProcessor.hpp
+    include/JetPositionChecker.hpp
+    include/LaserBehavior.hpp
+    include/LineDetector.hpp
+    include/Main.hpp
+    include/Plant.hpp
+    include/PlantDetector.hpp
+    include/ProcessingFactory.hpp
+    include/Species.hpp
 )
 
 # Targets
