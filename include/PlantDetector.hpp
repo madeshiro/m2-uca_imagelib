@@ -6,6 +6,8 @@
 #include "Plant.hpp"
 
 class PlantDetector {
+protected:
+    cv::Mat PlantDetector::ElimColor(cv::Mat in, cv::Scalar min, cv::Scalar max, int morph_size, int inpaint_size);
 public:
     std::vector<Plant> detectPlants(const cv::Mat& img); // Détection des plantes
 };
