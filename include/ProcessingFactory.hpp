@@ -19,6 +19,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
 
 namespace idl
 {
@@ -29,7 +30,7 @@ namespace idl
         {
             friend class ProcessingFactory;
         protected:
-            ImageProcessing(cv::Mat&& iImage);
+            ImageProcessing(cv::Mat&& iImage, std::string&& nImage);
         public:
             ImageProcessing() = default;
 
@@ -41,7 +42,7 @@ namespace idl
             /**
              * Write results to CSV in an output stream. 
              */
-            void write(std::ostream&) const;
+            void write(std::ofstream&) const;
 
             /**
              * @return the original image
@@ -64,6 +65,7 @@ namespace idl
              */
             LaserBehavior getLaserBehavior() const;
         private:
+            std::string _nameImg;
             cv::Mat _img;
             std::vector<Plant>  _plants;
             LineDetector*       _lineDetector = nullptr;    
