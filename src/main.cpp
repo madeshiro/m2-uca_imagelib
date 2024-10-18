@@ -13,8 +13,10 @@
 #include <string>
 #include <ctime>  // To generate the current date and time
 #include <sstream> // For formatting the filename
-
-// Struct to store the data for each image tested
+/**
+ * @struct ImageData
+ * Struct to store the data for each image tested
+*/
 struct ImageData {
     std::string imageName;
     cv::Point laserIntersection;
@@ -23,6 +25,10 @@ struct ImageData {
     laserBehavior laserOnObject; 
 };
 
+/**Get the current date and time as a formatted string
+ * The date and time format is: YYYY-MM-DD_HH-MM-SS
+ * @return string representing date and time
+ */
 std::string getCurrentDateTime() {
     time_t now = time(0);
     struct tm tstruct;
@@ -32,6 +38,12 @@ std::string getCurrentDateTime() {
     return std::string(buf);
 }
 
+/**
+ * Format a vector of 2D positions into a string
+ * like "(x1; y1)/ (x2; y2)/"
+ * @param vector of 2D points (cv::Vec2d)
+ * @return string representing 2D positions
+ */
 std::string formatPositions(const std::vector<cv::Vec2d>& positions) {
     std::stringstream ss;
     for (const auto& pos : positions) {
@@ -45,7 +57,12 @@ std::string formatPositions(const std::vector<cv::Vec2d>& positions) {
     return result;
 }
 
-// Function to generate the CSV file with the required data
+/**
+ * Generates and writes data to a CSV file with the name format
+ * "YYYY-MM-DD_HH-MM-SS_plantCheck.csv". It records the image name, laser intersection point,
+ * laser state, plant positions, and advantis positions.
+ * @param imageDataList A vector of ImageData structs containing data for each image.
+ */
 void generateCSV(const std::vector<ImageData>& imageDataList) {
 
     //The name of file
@@ -65,6 +82,8 @@ void generateCSV(const std::vector<ImageData>& imageDataList) {
     for (const auto& data : imageDataList) {
         std::string plantPosStr = formatPositions(data.plantPositions);
         std::string weedPosStr = formatPositions(data.advantisPositions);
+
+        //type of beahvior the laser 
         std::string laserOnStr = "Unknown";
         switch (data.laserOnObject) {
             case laserBehavior::onNothing:
@@ -91,7 +110,6 @@ void generateCSV(const std::vector<ImageData>& imageDataList) {
     csvFile.close();
     std::cout << "CSV file '" << filename << "' successfully created and updated!" << std::endl;
 }
-
 
 int main()
 {
