@@ -90,6 +90,11 @@ namespace idl
         std::vector<cv::Point> oResults;
         auto lines = getCurLines();
 
+        if (0 == lines.size())
+        {
+            return oResults;
+        }
+
         for (size_t lineIndex = 0; lineIndex < lines.size()-1; lineIndex++)
         {
             // retrieve the first line to compare, with its linear equation
@@ -167,7 +172,7 @@ namespace idl
         return !getIntersections().empty();
     }
 
-    void LineDetector::showResults() const 
+    cv::Mat LineDetector::drawResults() const 
     {
         cv::Mat dst = _img.clone();
         auto lines = getCurLines();
@@ -192,7 +197,17 @@ namespace idl
             cv::circle(dst, pt, 3, cv::Scalar(0,255,255), -1);
         }
 
-        cv::circle(dst, getIntersection(), 2, cv::Scalar(0,255,0), -1);
+        if (hasIntersection())
+        {
+            cv::circle(dst, getIntersection(), 2, cv::Scalar(0,255,0), -1);
+        }
+
+        return dst;
+    }
+
+    void LineDetector::showResults() const 
+    {
+        cv::Mat dst = drawResults();
 
         cv::imshow("Detected Lines (in red) and intersections (in yellow + green)", dst);
         cv::waitKey();

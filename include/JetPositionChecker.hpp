@@ -55,7 +55,7 @@ namespace idl
         static LaserBehavior isOnPlant(const Plant& iPlant, const cv::Point& iJet); 
     private:
         const LineDetector& _lineDetector;
-        std::vector<Plant> _plants;
+        const std::vector<Plant>& _plants;
     };
 }
 
