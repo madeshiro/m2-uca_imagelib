@@ -29,6 +29,7 @@ set(${TARGET}_SOURCES
     src/PlantDetector.cpp
     src/ImagePreProcessor.cpp
     src/JetPositionChecker.cpp
+    src/ProcessingFactory.cpp
 )
 
 set(${TARGET}_HEADERS

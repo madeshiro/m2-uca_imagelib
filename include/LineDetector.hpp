@@ -64,6 +64,11 @@ namespace idl // Images Development Library
         bool hasIntersection() const;
 
         /**
+         * Draw detected laser and the intersection.
+         */
+        cv::Mat drawResults() const;
+
+        /**
          * For debug purpose. 
          * Display the line onto the origin image. 
          */
