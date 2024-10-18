@@ -33,14 +33,13 @@ namespace idl // Images Development Library
         LineDetector& operator =(LineDetector&&) noexcept = delete;
 
         ~LineDetector() noexcept = default;
-    protected:
-        // Disable creation from external classes except factory
+    
         /**
          * Create a line detector from an image to analyze. 
          * @param iImgSrc the image to detect lines from. 
          */
         LineDetector(const cv::Mat& iImgSrc);
-    public:
+    
         /** 
          * Get detected lines using hough transformation.
          * @return a list of vec4i (x0, y0, x1, y1) 
@@ -58,6 +57,16 @@ namespace idl // Images Development Library
          * @see LineDetector::getIntersections()
          */
         cv::Point getIntersection() const;
+
+        /**
+         * @return if the line detector has retrieved an intersection. 
+         */
+        bool hasIntersection() const;
+
+        /**
+         * Draw detected laser and the intersection.
+         */
+        cv::Mat drawResults() const;
 
         /**
          * For debug purpose. 

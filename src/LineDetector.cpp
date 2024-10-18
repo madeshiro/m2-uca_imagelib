@@ -90,8 +90,14 @@ namespace idl
         std::vector<cv::Point> oResults;
         auto lines = getCurLines();
 
+        if (0 == lines.size())
+        {
+            return oResults;
+        }
+
         for (size_t lineIndex = 0; lineIndex < lines.size()-1; lineIndex++)
         {
+            // retrieve the first line to compare, with its linear equation
             auto line1     = lines[lineIndex];
             auto linearEq1 = toLinearEquation(line1); 
 
@@ -99,11 +105,16 @@ namespace idl
                 compareLineIndex < lines.size(); 
                 compareLineIndex++)
             {
+                // retrieve the second line to compare, with its linear equation
                 auto line2     = lines[compareLineIndex];
                 auto linearEq2 = toLinearEquation(line2);
     
+                // check the angle between the two lines
+                // if the angle is too small, they might be parallel in reality 
+                // then ignore, otherwise, continue comparison
                 if ((computeAngle(line1, line2)) > 0.1f /* threshold */)
                 {
+                    // Prepare for linear equation resolving
                     float data[2][2] = {
                         {linearEq1[0], linearEq1[1]},
                         {linearEq2[0], linearEq2[1]}
@@ -112,11 +123,15 @@ namespace idl
                     cv::Vec2f B = {-linearEq1[2], -linearEq2[2]};
                     cv::Vec2f pt;
 
+                    // Solve linear equations
                     bool isSolve = cv::solve(A, B, pt);
+
+                    // If equations has been solved and point is in outlines
                     if (isSolve 
                         && pt[0] >= 0 && pt[0] < _img.cols
                         && pt[1] >= 0 && pt[1] < _img.rows)
                     {
+                        // Add intersection to list
                         oResults.emplace_back(cv::Point{
                             static_cast<int>(pt[0]), static_cast<int>(pt[1])
                         });
@@ -130,22 +145,34 @@ namespace idl
 
     cv::Point LineDetector::getIntersection() const 
     {
-        cv::Point oPoint;
-        auto points = getIntersections();
-        int xTotal = 0, yTotal = 0;
-        int ptSize = static_cast<int>(points.size());
+        cv::Point oPoint {-1, -1};          // result point
+        auto points = getIntersections();   // the differents retrieved points
+        int xTotal = 0, yTotal = 0;         // the sum of all Xs and Ys
+        int ptSize = static_cast<int>(points.size()); // the number of points to get mean point
         
+        if (0 == ptSize)
+        {
+            // no point detected, return default "error" point with invalid value
+            return oPoint;
+        }
 
+        // Add all points to compute the mean point
         for (const auto& pt : points)
         {
             xTotal += pt.x;
             yTotal += pt.y;
         }
 
+        // Compute and return the mean point
         return cv::Point {xTotal / ptSize, yTotal / ptSize};
     }
 
-    void LineDetector::showResults() const 
+    bool LineDetector::hasIntersection() const 
+    {
+        return !getIntersections().empty();
+    }
+
+    cv::Mat LineDetector::drawResults() const 
     {
         cv::Mat dst = _img.clone();
         auto lines = getCurLines();
@@ -170,7 +197,17 @@ namespace idl
             cv::circle(dst, pt, 3, cv::Scalar(0,255,255), -1);
         }
 
-        cv::circle(dst, getIntersection(), 2, cv::Scalar(0,255,0), -1);
+        if (hasIntersection())
+        {
+            cv::circle(dst, getIntersection(), 2, cv::Scalar(0,255,0), -1);
+        }
+
+        return dst;
+    }
+
+    void LineDetector::showResults() const 
+    {
+        cv::Mat dst = drawResults();
 
         cv::imshow("Detected Lines (in red) and intersections (in yellow + green)", dst);
         cv::waitKey();

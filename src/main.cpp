@@ -3,9 +3,10 @@
 #include <LineDetector.hpp>
 #include <Plant.hpp>
 #include <PlantDetector.hpp>
+#include <JetPositionChecker.hpp>
 #include <ImagePreProcessor.hpp>
 #include <LaserBehavior.hpp>
-
+#include <ProcessingFactory.hpp>
 
 #include <fstream>
 #include <vector>
@@ -21,7 +22,7 @@ struct ImageData {
     cv::Point laserIntersection;
     std::vector<cv::Vec2d> plantPositions;
     std::vector<cv::Vec2d> advantisPositions;
-    laserBehavior laserOnObject; 
+    LaserBehavior laserOnObject; 
 };
 
 /**Get the current date and time as a formatted string
@@ -85,13 +86,13 @@ void generateCSV(const std::vector<ImageData>& imageDataList) {
         //type of beahvior the laser 
         std::string laserOnStr = "Unknown";
         switch (data.laserOnObject) {
-            case laserBehavior::onNothing:
+            case LaserBehavior::onNothing:
                 laserOnStr = "onNothing";
                 break;
-            case laserBehavior::onAdventis:
+            case LaserBehavior::onAdventis:
                 laserOnStr = "onWheat";
                 break;
-            case laserBehavior::onWheat:
+            case LaserBehavior::onWheat:
                 laserOnStr = "onAdventis";
                 break;
             default:
@@ -112,48 +113,40 @@ void generateCSV(const std::vector<ImageData>& imageDataList) {
 
 int main()
 {
-    idl::PlantDetector detector;
-
-    cv::Mat image = cv::imread("../data/im001.png", cv::IMREAD_COLOR);
-    if (image.empty()) {
-        std::cerr << "Error: Image not found" << std::endl;
-        return 1;
-    }
-
-    std::vector<cv::Mat> images;
-
-    cv::String path = "../data/*.png";
-    std::vector<cv::String> dataFileNames;
-    cv::glob(path, dataFileNames, false);
-    for(size_t k = 0; k < dataFileNames.size(); k++){
-    	cv::Mat image = cv::imread(dataFileNames[k], cv::IMREAD_COLOR);
-    	//image = idl::ImagePreProcessor::process(image);
-        images.push_back(image);
-    }
+    idl::ProcessingFactory factory("../data");
+    std::cout << "Found " << factory.listProcessing().size() << " image(s)!" << std::endl;
 
     cv::namedWindow("Image", cv::WINDOW_AUTOSIZE);
 
-    cv::Mat ranged;
-    std::vector<ImageData> imageDataList; 
     int i = 0;
     while(1)
     {    
-        std::vector<idl::Plant> plants = detector.detectPlants(images[i]);
-        cv::Mat image2 = images[i].clone();
+        cv::Mat imgs[2] = {
+            factory[i].getImageWithDetails(),
+            factory[i].getImageWithMasks()
+        };
 
-        //generateCSV with this varaiable
-        std::vector<cv::Vec2d> plantPositions;
-        std::vector<cv::Vec2d> advantisPositions;
-
-        for(int j = 0; j < plants.size(); j++){
-            cv::rectangle(image2, plants[j].boundingBox, plants[j].plantSpecies == idl::Species::wheat ? cv::Scalar(255,0,0) : cv::Scalar(0,255,0), 2);
-            //generateCSV fill variable
-            if (plants[j].plantSpecies == idl::Species::wheat) {
-                plantPositions.push_back(plants[j].position);
-            } else {
-                advantisPositions.push_back(plants[j].position);
+        for (auto img : imgs)
+        {
+            char windowTitle[60];
+            std::snprintf(windowTitle, 60, "Image #%d", i);
+            cv::imshow("Image", img);
+            if(cv::waitKey(100) == 27){
+                return 0;
             }
         }
+
+        i = (++i%factory.listProcessing().size());
+        if(0 == i)
+        {
+            return 0;
+        }
+    }
+
+    return 0;
+}
+
+/*
 
         // Detect the laser intersection
         //idl::LineDetector lineDetector(image2);
@@ -169,24 +162,7 @@ int main()
         imageData.plantPositions = plantPositions;
         imageData.advantisPositions = advantisPositions;
         imageData.laserOnObject = imagelaserOn; 
-
         imageDataList.push_back(imageData);
+        generateCSV(imageDataList);
+*/
 
-
-        cv::imshow("Image", image2);
-        if(cv::waitKey(100) == 27){
-            break;
-        }
-
-        i++;
-        if(i >= images.size()){
-        	break;
-            //i = 0;
-        }
-        
-    }
-
-    generateCSV(imageDataList);
-
-    return 0;
-}
