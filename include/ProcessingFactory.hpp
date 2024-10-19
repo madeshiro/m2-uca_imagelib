@@ -42,7 +42,7 @@ namespace idl
             /**
              * Write results to CSV in an output stream. 
              */
-            void write(std::ofstream&) const;
+            void write(std::ostream&) const;
 
             /**
              * @return the original image
