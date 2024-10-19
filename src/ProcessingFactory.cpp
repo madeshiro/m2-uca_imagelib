@@ -50,14 +50,8 @@ namespace idl
         return result;
     }
 
-    void ProcessingFactory::ImageProcessing::write(std::ofstream& csvFile) const 
+    void ProcessingFactory::ImageProcessing::write(std::ostream& csvFile) const 
     {
-        //check if is open
-        if (!csvFile.is_open()) {
-            std::cerr << "Failed to open file" << std::endl;
-            return;
-        }
-
         std::string plantPosStr = formatPositions(_plants);
 
         //type of beahvior the laser 
@@ -160,10 +154,11 @@ namespace idl
         for (const auto& fileName : dataFileNames)
         {
             auto img = cv::imread(fileName, cv::IMREAD_COLOR);
-            if (img.empty()) {
-            std::cerr << "Error: Could not load image " << fileName << std::endl;
-            continue; // Skip to the next file
-}
+            if (img.empty()) 
+            {
+                std::cerr << "Error: Could not load image " << fileName << std::endl;
+                continue; // Skip to the next file
+            }
             //img = ImagePreProcessor::process(img);
             std::string fileNameStr = fileName.substr(fileName.find_last_of("/") + 1);;
             ImageProcessing imgProce = ImageProcessing {std::move(img), std::move(fileNameStr)};

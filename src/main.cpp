@@ -84,11 +84,7 @@ int main()
 
     cv::namedWindow("Image", cv::WINDOW_AUTOSIZE);
 
-    cv::Mat ranged;
-    std::vector<ImageData> imageDataList; 
-    int i = 0;
-    while(1)
-    while(1)
+    for(int i = 0; i < factory.listProcessing().size(); ++i)
     {   
          
         cv::Mat imgs[2] = {
@@ -105,15 +101,8 @@ int main()
                 return 0;
             }
         }
-    
-        i = (++i%factory.listProcessing().size());
-        if(0 == i)
-        {
-            generateCSV(factory);
-            return 0;
-        }
-
     }
+    generateCSV(factory);
 
     return 0;
 }
