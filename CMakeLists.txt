@@ -11,7 +11,7 @@ cmake_minimum_required(VERSION 3.22 FATAL_ERROR)
 project(CVforAgriculture LANGUAGES CXX VERSION 0.1)
 
 # Project configs
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Define target's name

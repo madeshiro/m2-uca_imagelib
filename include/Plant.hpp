@@ -14,6 +14,8 @@ namespace idl
         cv::Mat plantImg;       // Image de la plante
         cv::Mat mask;           // Masque de la plante
         Species plantSpecies;   // Espèce de la plante (wheat, advantis, etc.)
+        float area;
+        float score;
     };
 }
 
