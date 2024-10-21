@@ -14,6 +14,15 @@
 #include <ctime>  // To generate the current date and time
 #include <sstream> // For formatting the filename
 
+
+#include <filesystem>  // Utilisation correcte du header filesystem
+
+#ifdef __APPLE__
+    namespace fs = std::__fs::filesystem;  // Sur macOS, utilisez __fs::filesystem
+#else
+    namespace fs = std::filesystem;  // Sur les autres systèmes, utilisez std::filesystem
+#endif
+
      /**Get the current date and time as a formatted string
      * The date and time format is: YYYY-MM-DD_HH-MM-SS
      * @return string representing date and time
@@ -32,15 +41,25 @@
      * Generates and writes data to a CSV file with the name format
      * "YYYY-MM-DD_HH-MM-SS_plantCheck.csv". It records the image name, laser intersection point,
      * laser state, plant positions, and advantis positions
-     * @param factory containing data for each image
+     * @param factory containing data for each image and path for save file
      */
 
-    void generateCSV(const idl::ProcessingFactory& factory) {
+    void generateCSV(const idl::ProcessingFactory& factory, const fs::path pathFolder) {
+
+        //check if the folder exists
+        if (!fs::exists(pathFolder)) 
+        {
+            std::cerr << "Error: The directory '" << pathFolder << "' does not exist." << std::endl;
+            return;
+        }
+
         //The name of file
         std::string filename = getCurrentDateTime() + "_plantCheck.csv";
+        fs::path fullFilePath = pathFolder / filename;
 
+        //create folder
         std::ofstream csvFile;
-        csvFile.open(filename, std::ios::app);
+        csvFile.open(fullFilePath, std::ios::app);
         if (!csvFile.is_open()) {
             std::cerr << "Error: Unable to open or create the CSV file." << std::endl;
             return;
@@ -56,7 +75,7 @@
         }
 
         csvFile.close();
-        std::cout << "CSV file '" << filename << "' successfully created and updated!" << std::endl;
+        std::cout << "CSV file successfully created and updated!" << std::endl;
         
     }
 
@@ -68,6 +87,18 @@ int main()
 
     cv::namedWindow("Image", cv::WINDOW_AUTOSIZE);
 
+    //create a new folder
+    std::string directoryPath = "./" + getCurrentDateTime() + "WeedProj_Results";
+
+    if (!fs::exists(directoryPath)) {
+        //if doesn't exist create the folder
+        if (!fs::create_directory(directoryPath)) {
+            std::cerr << "Error : for create folder" << std::endl;
+            return 1;
+        }
+    }
+    fs::path savedPath = fs::absolute(directoryPath);
+
     for(int i = 0; i < factory.listProcessing().size(); ++i)
     {   
          
@@ -75,18 +106,36 @@ int main()
             factory[i].getImageWithDetails(),
             factory[i].getImageWithMasks()
         };
+        std::string baseImageName = factory[i].getImageName(); //name of img
 
+        // path file img
+        fs::path imgDetailsPath = savedPath / (baseImageName + "_details.png");
+        fs::path imgMaskPath = savedPath / (baseImageName + "_mask.png");
+
+        // save img
+        if (!cv::imwrite(imgDetailsPath.string(), imgs[0])) 
+        {
+            std::cerr << "Error: Failed to save image for '" << baseImageName << "'" << std::endl;
+        }
+        if (!cv::imwrite(imgMaskPath.string(), imgs[1])) 
+        {
+            std::cerr << "Error: Failed to save image for '" << baseImageName << "'" << std::endl;
+        }
+
+        // display picture
         for (auto img : imgs)
         {
             char windowTitle[60];
             std::snprintf(windowTitle, 60, "Image #%d", i);
             cv::imshow("Image", img);
-            if(cv::waitKey(100) == 27){
+            if(cv::waitKey(200) == 27){
                 return 0;
             }
         }
     }
-    generateCSV(factory);
+
+    //generate CSV
+    generateCSV(factory, savedPath);
 
     return 0;
 }

@@ -55,9 +55,13 @@ namespace idl
              */
             cv::Mat getImageWithDetails() const;
             /**
-             * @return the original image with plants mask draw above.
+             * @return the original image with plants mask draw above
              */
             cv::Mat getImageWithMasks() const;
+
+            // @return the name of the image
+            std::string getImageName() const { return _nameImg; }
+
         private:
             std::string _nameImg;
             cv::Mat _img;
