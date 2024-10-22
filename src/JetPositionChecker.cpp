@@ -28,6 +28,10 @@ namespace idl
                 }
             }
         }
+        else if (Species::advantis == iPlant.plantSpecies)
+        {
+            // TODO
+        }
         
         // The laser isn't on the plant
         return LaserBehavior::onNothing;
