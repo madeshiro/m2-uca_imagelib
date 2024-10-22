@@ -1,0 +1,55 @@
+\doxysection{Image\+Pre\+Processor.\+hpp}
+\hypertarget{ImagePreProcessor_8hpp_source}{}\label{ImagePreProcessor_8hpp_source}\index{include/ImagePreProcessor.hpp@{include/ImagePreProcessor.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ File:\ \ \ \ \ \ \ \ ImagePreProcessor.hpp}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Description:\ Definition\ of\ ImagePreProcessor\ (OpenCV)}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ File\ generated\ on\ Oct\ 2024\ by\ Rin\ Baudelet}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ IMAGE\_PRE\_PROCESSOR\_HPP}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ IMAGE\_PRE\_PROCESSOR\_HPP}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <opencv2/opencv.hpp>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }idl}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ Enum\ class\ defining\ various\ types\ of\ image\ preprocessing\ operations}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{enum\ class}\ PreprocessingType\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ GaussianBlur,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ MedianBlur,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ Thresholding,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ HistogramEqualization,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ NoiseCorrection,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ Grayscale}
+\DoxyCodeLine{00025\ \ \ \ \ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classidl_1_1ImagePreProcessor}{ImagePreProcessor}}\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ cv::Mat\ applyGaussianBlur(\textcolor{keyword}{const}\ cv::Mat\&\ img,\ \textcolor{keywordtype}{int}\ kernelSize,\ \textcolor{keywordtype}{double}\ sigma);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ cv::Mat\ applyMedianBlur(\textcolor{keyword}{const}\ cv::Mat\&\ img,\ \textcolor{keywordtype}{int}\ kernelSize);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ cv::Mat\ applyThresholding(\textcolor{keyword}{const}\ cv::Mat\&\ img,\ \textcolor{keywordtype}{double}\ thresh,\ \textcolor{keywordtype}{double}\ maxVal);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ cv::Mat\ applyHistogramEqualization(\textcolor{keyword}{const}\ cv::Mat\&\ img);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ cv::Mat\ applyNoiseCorrection(\textcolor{keyword}{const}\ cv::Mat\&\ img,\ \textcolor{keywordtype}{float}\ h\ =\ 30.0f);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ cv::Mat\ applyGrayscale(\textcolor{keyword}{const}\ cv::Mat\&\ img);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ cv::Mat\ \mbox{\hyperlink{classidl_1_1ImagePreProcessor_a3766071051ed00d10a78cf04abe52159}{process}}(\textcolor{keyword}{const}\ cv::Mat\&\ img,\ PreprocessingType\ type);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ cv::Mat\ \mbox{\hyperlink{classidl_1_1ImagePreProcessor_a3766071051ed00d10a78cf04abe52159}{process}}(\textcolor{keyword}{const}\ cv::Mat\&\ img);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \};}
+\DoxyCodeLine{00094\ \}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00096\ }
+
+\end{DoxyCode}

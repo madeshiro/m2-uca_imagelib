@@ -1,0 +1,36 @@
+\doxysection{idl\+::Plant\+Detector Class Reference}
+\hypertarget{classidl_1_1PlantDetector}{}\label{classidl_1_1PlantDetector}\index{idl::PlantDetector@{idl::PlantDetector}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ \mbox{\hyperlink{classidl_1_1Plant}{Plant}} $>$ \mbox{\hyperlink{classidl_1_1PlantDetector_a7dcb966585960d4f925c57f1d4ff6265}{detect\+Plants}} (const cv\+::\+Mat \&img, bool enable\+Sliders=false)
+\begin{DoxyCompactList}\small\item\em This is the main class function to detect the various plants in the image and classify their species (advantis/wheat) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classidl_1_1PlantDetector_a7dcb966585960d4f925c57f1d4ff6265}\index{idl::PlantDetector@{idl::PlantDetector}!detectPlants@{detectPlants}}
+\index{detectPlants@{detectPlants}!idl::PlantDetector@{idl::PlantDetector}}
+\doxysubsubsection{\texorpdfstring{detectPlants()}{detectPlants()}}
+{\footnotesize\ttfamily \label{classidl_1_1PlantDetector_a7dcb966585960d4f925c57f1d4ff6265} 
+std\+::vector$<$ \mbox{\hyperlink{classidl_1_1Plant}{Plant}} $>$ idl\+::\+Plant\+Detector\+::detect\+Plants (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{img}{, }\item[{bool}]{enable\+Sliders}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This is the main class function to detect the various plants in the image and classify their species (advantis/wheat) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & the input image \\
+\hline
+{\em enable\+Sliders} & whether or not you want the debug filtering sliders to appear, useful to fiddle with the values in real time \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+Plant$>$ The detected plants 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Plant\+Detector.\+hpp\item 
+src/Plant\+Detector.\+cpp\end{DoxyCompactItemize}

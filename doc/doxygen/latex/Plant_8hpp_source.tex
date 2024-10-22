@@ -1,0 +1,28 @@
+\doxysection{Plant.\+hpp}
+\hypertarget{Plant_8hpp_source}{}\label{Plant_8hpp_source}\index{include/Plant.hpp@{include/Plant.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PLANT\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PLANT\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <opencv2/opencv.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Species.hpp"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }idl\ }
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classidl_1_1Plant}{Plant}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ cv::Vec2d\ center;\ \ \ \ \ \ \ \textcolor{comment}{//\ Centre\ de\ la\ plante}}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ cv::Vec2d\ position;\ \ \ \ \ \textcolor{comment}{//\ Position\ de\ la\ plante}}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ cv::Rect\ boundingBox;\ \ \ \textcolor{comment}{//\ Boîte\ englobante\ de\ la\ plante}}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ cv::Mat\ plantImg;\ \ \ \ \ \ \ \textcolor{comment}{//\ Image\ de\ la\ plante}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ cv::Mat\ mask;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Masque\ de\ la\ plante}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ Species\ plantSpecies;\ \ \ \textcolor{comment}{//\ Espèce\ de\ la\ plante\ (wheat,\ advantis,\ etc.)}}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ area;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ score;}
+\DoxyCodeLine{00019\ \ \ \ \ \};}
+\DoxyCodeLine{00020\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PLANT\_HPP}}
+
+\end{DoxyCode}

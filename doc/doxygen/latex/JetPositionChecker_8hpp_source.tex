@@ -1,0 +1,51 @@
+\doxysection{Jet\+Position\+Checker.\+hpp}
+\hypertarget{JetPositionChecker_8hpp_source}{}\label{JetPositionChecker_8hpp_source}\index{include/JetPositionChecker.hpp@{include/JetPositionChecker.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ File:\ \ \ \ \ \ \ \ JetPositionChecker.hpp}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Description:\ Definition\ of\ JetPositionChecker\ }}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ File\ generated\ on\ Oct\ 2024\ by\ Rin\ Baudelet}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ JET\_POSITION\_CHECKER\_HPP}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ JET\_POSITION\_CHECKER\_HPP}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Plant.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}LaserBehavior.hpp"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}LineDetector.hpp"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <opencv2/opencv.hpp>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }idl\ }
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classidl_1_1JetPositionChecker}{JetPositionChecker}}\ }
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Disallow\ copy}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1JetPositionChecker}{JetPositionChecker}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classidl_1_1JetPositionChecker}{JetPositionChecker}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1JetPositionChecker}{JetPositionChecker}}\&\ operator\ =(\textcolor{keyword}{const}\ \mbox{\hyperlink{classidl_1_1JetPositionChecker}{JetPositionChecker}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Disallow\ move}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1JetPositionChecker}{JetPositionChecker}}(\mbox{\hyperlink{classidl_1_1JetPositionChecker}{JetPositionChecker}}\&\&)\ \textcolor{keyword}{noexcept}\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1JetPositionChecker}{JetPositionChecker}}\&\ operator\ =(\mbox{\hyperlink{classidl_1_1JetPositionChecker}{JetPositionChecker}}\&\&)\ \textcolor{keyword}{noexcept}\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1JetPositionChecker}{\string~JetPositionChecker}}()\ \textcolor{keyword}{noexcept}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1JetPositionChecker}{JetPositionChecker}}(\textcolor{keyword}{const}\ std::vector<Plant>\&\ iPlants,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classidl_1_1LineDetector}{LineDetector}}\&\ iLineDetector);}
+\DoxyCodeLine{00040\ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ LaserBehavior\ \mbox{\hyperlink{classidl_1_1JetPositionChecker_a55cd78c66c47b85af88dfc607109cde7}{computeState}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ LaserBehavior\ \mbox{\hyperlink{classidl_1_1JetPositionChecker_a78b26056584c090c0608933a21c4b3b3}{isOnPlant}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classidl_1_1Plant}{Plant}}\&\ iPlant,\ \textcolor{keyword}{const}\ cv::Point\&\ iJet);\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classidl_1_1LineDetector}{LineDetector}}\&\ \_lineDetector;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Plant>\&\ \_plants;}
+\DoxyCodeLine{00059\ \ \ \ \ \};}
+\DoxyCodeLine{00060\ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ JET\_POSITION\_CHECKER\_HPP}}
+
+\end{DoxyCode}

@@ -1,0 +1,48 @@
+\doxysection{idl\+::Processing\+Factory Class Reference}
+\hypertarget{classidl_1_1ProcessingFactory}{}\label{classidl_1_1ProcessingFactory}\index{idl::ProcessingFactory@{idl::ProcessingFactory}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing}{Image\+Processing}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classidl_1_1ProcessingFactory_a56025d1b39b00fbe83da29bfa70524ea}{Processing\+Factory}} (const std\+::string \&i\+Img\+Directory)
+\item 
+constexpr const std\+::vector$<$ \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing}{Image\+Processing}} $>$ \& \mbox{\hyperlink{classidl_1_1ProcessingFactory_aa08331a5686a25e3060f5eaa9cd6e773}{list\+Processing}} () const
+\item 
+\Hypertarget{classidl_1_1ProcessingFactory_a437d69b039810d025393316e3db07bd3}\label{classidl_1_1ProcessingFactory_a437d69b039810d025393316e3db07bd3} 
+const \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing}{Image\+Processing}} \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (size\+\_\+t index) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classidl_1_1ProcessingFactory_a56025d1b39b00fbe83da29bfa70524ea}\index{idl::ProcessingFactory@{idl::ProcessingFactory}!ProcessingFactory@{ProcessingFactory}}
+\index{ProcessingFactory@{ProcessingFactory}!idl::ProcessingFactory@{idl::ProcessingFactory}}
+\doxysubsubsection{\texorpdfstring{ProcessingFactory()}{ProcessingFactory()}}
+{\footnotesize\ttfamily \label{classidl_1_1ProcessingFactory_a56025d1b39b00fbe83da29bfa70524ea} 
+idl\+::\+Processing\+Factory\+::\+Processing\+Factory (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{i\+Img\+Directory}{}\end{DoxyParamCaption})}
+
+Create a new image processing pipeline.
+
+
+\begin{DoxyParams}{Parameters}
+{\em i\+Img\+Directory} & a directory containing png file label as img\#\#\#.png with \#\#\# the number of the file from 000 to 100 (in order) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classidl_1_1ProcessingFactory_aa08331a5686a25e3060f5eaa9cd6e773}\index{idl::ProcessingFactory@{idl::ProcessingFactory}!listProcessing@{listProcessing}}
+\index{listProcessing@{listProcessing}!idl::ProcessingFactory@{idl::ProcessingFactory}}
+\doxysubsubsection{\texorpdfstring{listProcessing()}{listProcessing()}}
+{\footnotesize\ttfamily \label{classidl_1_1ProcessingFactory_aa08331a5686a25e3060f5eaa9cd6e773} 
+const std\+::vector$<$ \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing}{Image\+Processing}} $>$ \& idl\+::\+Processing\+Factory\+::list\+Processing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+List each process create for every image 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Processing\+Factory.\+hpp\item 
+src/Processing\+Factory.\+cpp\end{DoxyCompactItemize}

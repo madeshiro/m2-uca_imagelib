@@ -1,0 +1,115 @@
+\doxysection{idl\+::Line\+Detector Class Reference}
+\hypertarget{classidl_1_1LineDetector}{}\label{classidl_1_1LineDetector}\index{idl::LineDetector@{idl::LineDetector}}
+
+
+{\ttfamily \#include $<$Line\+Detector.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classidl_1_1LineDetector_a830903f3a10a238e4cd1549e383f3dc0}\label{classidl_1_1LineDetector_a830903f3a10a238e4cd1549e383f3dc0} 
+{\bfseries Line\+Detector} (const \mbox{\hyperlink{classidl_1_1LineDetector}{Line\+Detector}} \&)=delete
+\item 
+\Hypertarget{classidl_1_1LineDetector_a64444a800a46c4635f677b54e7029123}\label{classidl_1_1LineDetector_a64444a800a46c4635f677b54e7029123} 
+\mbox{\hyperlink{classidl_1_1LineDetector}{Line\+Detector}} \& {\bfseries operator=} (const \mbox{\hyperlink{classidl_1_1LineDetector}{Line\+Detector}} \&)=delete
+\item 
+\Hypertarget{classidl_1_1LineDetector_a0205e9557b91db32ccdf7bdce0548ebd}\label{classidl_1_1LineDetector_a0205e9557b91db32ccdf7bdce0548ebd} 
+{\bfseries Line\+Detector} (\mbox{\hyperlink{classidl_1_1LineDetector}{Line\+Detector}} \&\&) noexcept=delete
+\item 
+\Hypertarget{classidl_1_1LineDetector_a0696e2dd518d4e5c638064a88ebf5064}\label{classidl_1_1LineDetector_a0696e2dd518d4e5c638064a88ebf5064} 
+\mbox{\hyperlink{classidl_1_1LineDetector}{Line\+Detector}} \& {\bfseries operator=} (\mbox{\hyperlink{classidl_1_1LineDetector}{Line\+Detector}} \&\&) noexcept=delete
+\item 
+\mbox{\hyperlink{classidl_1_1LineDetector_aa1e5f89887f6c318b95287dbb40a125a}{Line\+Detector}} (const cv\+::\+Mat \&i\+Img\+Src)
+\item 
+std\+::vector$<$ cv\+::\+Vec4i $>$ \mbox{\hyperlink{classidl_1_1LineDetector_afacb87d4c42bf28830b0520c95b3bddf}{get\+Cur\+Lines}} () const
+\item 
+std\+::vector$<$ cv\+::\+Point $>$ \mbox{\hyperlink{classidl_1_1LineDetector_a20b5d5af1ca86abdfb21dd8510bd90a3}{get\+Intersections}} () const
+\item 
+cv\+::\+Point \mbox{\hyperlink{classidl_1_1LineDetector_ac0a9a65553662c10da0dfbf255d0c7f6}{get\+Intersection}} () const
+\item 
+bool \mbox{\hyperlink{classidl_1_1LineDetector_a1621e513452e14029cedfe6ac6f17a48}{has\+Intersection}} () const
+\item 
+cv\+::\+Mat \mbox{\hyperlink{classidl_1_1LineDetector_a9394921b4d67922c6d648f455f3f7596}{draw\+Results}} () const
+\item 
+void \mbox{\hyperlink{classidl_1_1LineDetector_a1b5bd66e8ab8b88003fae8d2c3dbd812}{show\+Results}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classidl_1_1LineDetector_a0c914774adcdf3a9073115674712ac63}\label{classidl_1_1LineDetector_a0c914774adcdf3a9073115674712ac63} 
+class {\bfseries idl\+::\+Processing\+Factory}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Module to detect the laser line from robot camera images. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classidl_1_1LineDetector_aa1e5f89887f6c318b95287dbb40a125a}\index{idl::LineDetector@{idl::LineDetector}!LineDetector@{LineDetector}}
+\index{LineDetector@{LineDetector}!idl::LineDetector@{idl::LineDetector}}
+\doxysubsubsection{\texorpdfstring{LineDetector()}{LineDetector()}}
+{\footnotesize\ttfamily \label{classidl_1_1LineDetector_aa1e5f89887f6c318b95287dbb40a125a} 
+idl\+::\+Line\+Detector\+::\+Line\+Detector (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{i\+Img\+Src}{}\end{DoxyParamCaption})}
+
+Create a line detector from an image to analyze. 
+\begin{DoxyParams}{Parameters}
+{\em i\+Img\+Src} & the image to detect lines from. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classidl_1_1LineDetector_a9394921b4d67922c6d648f455f3f7596}\index{idl::LineDetector@{idl::LineDetector}!drawResults@{drawResults}}
+\index{drawResults@{drawResults}!idl::LineDetector@{idl::LineDetector}}
+\doxysubsubsection{\texorpdfstring{drawResults()}{drawResults()}}
+{\footnotesize\ttfamily \label{classidl_1_1LineDetector_a9394921b4d67922c6d648f455f3f7596} 
+cv\+::\+Mat idl\+::\+Line\+Detector\+::draw\+Results (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+Draw detected laser and the intersection. \Hypertarget{classidl_1_1LineDetector_afacb87d4c42bf28830b0520c95b3bddf}\index{idl::LineDetector@{idl::LineDetector}!getCurLines@{getCurLines}}
+\index{getCurLines@{getCurLines}!idl::LineDetector@{idl::LineDetector}}
+\doxysubsubsection{\texorpdfstring{getCurLines()}{getCurLines()}}
+{\footnotesize\ttfamily \label{classidl_1_1LineDetector_afacb87d4c42bf28830b0520c95b3bddf} 
+std\+::vector$<$ cv\+::\+Vec4i $>$ idl\+::\+Line\+Detector\+::get\+Cur\+Lines (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+Get detected lines using hough transformation. \begin{DoxyReturn}{Returns}
+a list of vec4i (x0, y0, x1, y1) 
+\end{DoxyReturn}
+\Hypertarget{classidl_1_1LineDetector_ac0a9a65553662c10da0dfbf255d0c7f6}\index{idl::LineDetector@{idl::LineDetector}!getIntersection@{getIntersection}}
+\index{getIntersection@{getIntersection}!idl::LineDetector@{idl::LineDetector}}
+\doxysubsubsection{\texorpdfstring{getIntersection()}{getIntersection()}}
+{\footnotesize\ttfamily \label{classidl_1_1LineDetector_ac0a9a65553662c10da0dfbf255d0c7f6} 
+cv\+::\+Point idl\+::\+Line\+Detector\+::get\+Intersection (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+Get the intersection by computing the mean points between every detect intersections \begin{DoxySeeAlso}{See also}
+\doxylink{classidl_1_1LineDetector_a20b5d5af1ca86abdfb21dd8510bd90a3}{Line\+Detector\+::get\+Intersections()} 
+\end{DoxySeeAlso}
+\Hypertarget{classidl_1_1LineDetector_a20b5d5af1ca86abdfb21dd8510bd90a3}\index{idl::LineDetector@{idl::LineDetector}!getIntersections@{getIntersections}}
+\index{getIntersections@{getIntersections}!idl::LineDetector@{idl::LineDetector}}
+\doxysubsubsection{\texorpdfstring{getIntersections()}{getIntersections()}}
+{\footnotesize\ttfamily \label{classidl_1_1LineDetector_a20b5d5af1ca86abdfb21dd8510bd90a3} 
+std\+::vector$<$ cv\+::\+Point $>$ idl\+::\+Line\+Detector\+::get\+Intersections (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+Computes intersection between lines. \begin{DoxyReturn}{Returns}
+a list of points representing the detected intersections 
+\end{DoxyReturn}
+\Hypertarget{classidl_1_1LineDetector_a1621e513452e14029cedfe6ac6f17a48}\index{idl::LineDetector@{idl::LineDetector}!hasIntersection@{hasIntersection}}
+\index{hasIntersection@{hasIntersection}!idl::LineDetector@{idl::LineDetector}}
+\doxysubsubsection{\texorpdfstring{hasIntersection()}{hasIntersection()}}
+{\footnotesize\ttfamily \label{classidl_1_1LineDetector_a1621e513452e14029cedfe6ac6f17a48} 
+bool idl\+::\+Line\+Detector\+::has\+Intersection (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+if the line detector has retrieved an intersection. 
+\end{DoxyReturn}
+\Hypertarget{classidl_1_1LineDetector_a1b5bd66e8ab8b88003fae8d2c3dbd812}\index{idl::LineDetector@{idl::LineDetector}!showResults@{showResults}}
+\index{showResults@{showResults}!idl::LineDetector@{idl::LineDetector}}
+\doxysubsubsection{\texorpdfstring{showResults()}{showResults()}}
+{\footnotesize\ttfamily \label{classidl_1_1LineDetector_a1b5bd66e8ab8b88003fae8d2c3dbd812} 
+void idl\+::\+Line\+Detector\+::show\+Results (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+For debug purpose. Display the line onto the origin image. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Line\+Detector.\+hpp\item 
+src/Line\+Detector.\+cpp\end{DoxyCompactItemize}

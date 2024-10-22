@@ -239,11 +239,11 @@ namespace idl
         std::vector<std::vector<cv::Point>> contours_combined;
         cv::findContours(combinedMask, contours_combined, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
 
-        // **Prepare ContourInfo Objects**
+        //  Prepare ContourInfo Objects 
         std::vector<ContourInfo> contourInfos;
 
         double centerLineX = image.cols / 2.0;
-        double centerLineThreshold = image.cols * 0.3; // Adjust as needed
+        double centerLineThreshold = image.cols * 0.3;
 
         // Image diagonal length
         double imageDiagonal = std::sqrt(image.cols * image.cols + image.rows * image.rows);
@@ -274,7 +274,7 @@ namespace idl
             }
             info.center = center;
 
-            // **Compute Features for Intelligent Scoring**
+            //  Compute Features for Intelligent Scoring 
 
             // Compute contour area
             double area = cv::contourArea(contour);
@@ -300,8 +300,7 @@ namespace idl
             double score = 0.0;
 
             // Size Feature
-            //if (area > 400.0)
-                score += area / 400;
+            score += area / 400;
 
             // Solidity Feature (wheat leaves may have higher solidity due to heart shape)
             if (solidity > 0.8)
@@ -333,7 +332,7 @@ namespace idl
             contourInfos.push_back(info);
         }
 
-        // **Second pass: Reclassify small plants near advantis as advantis**
+        //  Second pass: Reclassify small plants near advantis as advantis 
         for (auto& info : contourInfos)
         {
             if (info.plantSpecies == Species::wheat)
@@ -360,7 +359,7 @@ namespace idl
             }
         }
 
-        // **Group Contours by Species**
+        //  Group Contours by Species 
         std::vector<std::vector<cv::Point>> wheatContours;
         std::vector<std::vector<cv::Point>> advantisContours;
 
@@ -376,17 +375,17 @@ namespace idl
             }
         }
 
-        // **Perform Species-Aware Grouping**
+        //  Perform Species-Aware Grouping 
         std::vector<std::vector<cv::Point>> groupedWheatContours;
         std::vector<std::vector<cv::Point>> groupedAdvantisContours;
 
-        double wheatGroupMaxDistance = 50.0;    // Adjust as needed
-        double advantisGroupMaxDistance = 30.0; // Adjust as needed
+        double wheatGroupMaxDistance = 50.0;
+        double advantisGroupMaxDistance = 30.0;
 
         groupContours(wheatContours, groupedWheatContours, wheatGroupMaxDistance);
         groupContours(advantisContours, groupedAdvantisContours, advantisGroupMaxDistance);
 
-        // **Create Plant Objects from Grouped Contours**
+        //  Create Plant Objects from Grouped Contours 
         std::vector<Plant> plants;
 
         // Process grouped wheat contours
@@ -440,7 +439,7 @@ namespace idl
 
             plant.plantSpecies = Species::wheat;
 
-            // Compute area (optional)
+            // Compute area (not really used as of now)
             plant.area = cv::contourArea(contourGroup);
 
             plants.push_back(plant);
@@ -503,7 +502,7 @@ namespace idl
             plants.push_back(plant);
         }
 
-        // **Separate plants into wheat and advantis plants**
+        //  Separate plants into wheat and advantis plants 
         std::vector<Plant> wheatPlants;
         std::vector<Plant> advantisPlants;
 
@@ -519,7 +518,7 @@ namespace idl
             }
         }
 
-        // **Third pass: Remove advantis plants near the centers of wheat plants**
+        //  Third pass: Remove advantis plants near the centers of wheat plants 
         std::vector<bool> advantisPlantToRemove(advantisPlants.size(), false);
 
         for (const auto& wheatPlant : wheatPlants)
@@ -565,7 +564,7 @@ namespace idl
         plants.insert(plants.end(), wheatPlants.begin(), wheatPlants.end());
         plants.insert(plants.end(), filteredAdvantisPlants.begin(), filteredAdvantisPlants.end());
 
-        // **Final pass: Remove plants whose bounding boxes do not overlap with the edge mask**
+        //  Final pass: Remove plants whose bounding boxes do not overlap with the edge mask 
         std::vector<Plant> finalPlants;
         for (const auto& plant : plants)
         {
@@ -580,10 +579,7 @@ namespace idl
                 // Keep the plant
                 finalPlants.push_back(plant);
             }
-            else
-            {
-                // Discard the plant (it does not overlap with any edges)
-            }
+            // Discard the plant (it does not overlap with any edges)
         }
 
         return finalPlants;
@@ -601,18 +597,18 @@ namespace idl
         const double wheatScoreThreshold = 4.0;
         cv::Mat image = img.clone();
 
-        // Remove the laser line
+        // Remove the cyan laser line
         cv::Mat masked = ElimColor(image, cv::Scalar(80, 80, 80), cv::Scalar(100, 255, 255), 5, 5);
 
         // Initialize default parameters
         AdvantisParams advantisParams = {96, 0, 0, 179, 253, 109, 2, 2, 50.0, 0.0};
         WheatParams wheatParams = {0, 82, 123, 240, 131, 134, 3, 2, 500.0, 0.2, 5.0, 50.0};
 
-        // Edge detection parameters
+        // Canny edge detection parameters
         int lowThreshold = 22;
         int highThreshold = 64;
         int edgeDilateSize = 13;
-        int edgeErodeSize = 16; // Erosion size parameter
+        int edgeErodeSize = 16;
 
         if (enableSliders)
         {
