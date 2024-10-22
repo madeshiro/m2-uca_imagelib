@@ -80,26 +80,16 @@
     }
 
 
-int main()
+int main(int argc, char* argv[])
 {
-    idl::PlantDetector detector;
-
-    cv::Mat image = cv::imread("../data/im001.png", cv::IMREAD_COLOR);
-    if (image.empty()) {
-        std::cerr << "Error: Image not found" << std::endl;
-        return 1;
+    if (argc < 2) {
+        std::cerr << "Error: Please provide the path to the images directory !" << std::endl;
+        return -1;
     }
+    std::string imageDirectory = argv[1];
 
-    std::vector<cv::Mat> images;
-
-    cv::String path = "../data/*.png";
-    std::vector<cv::String> dataFileNames;
-    cv::glob(path, dataFileNames, false);
-    for(size_t k = 0; k < dataFileNames.size(); k++){
-    	cv::Mat image = cv::imread(dataFileNames[k], cv::IMREAD_COLOR);
-    	//image = idl::ImagePreProcessor::process(image);
-        images.push_back(image);
-    }
+    idl::ProcessingFactory factory(imageDirectory);
+    std::cout << "Found " << factory.listProcessing().size() << " image(s)!" << std::endl;
 
     cv::namedWindow("Image", cv::WINDOW_AUTOSIZE);
 
