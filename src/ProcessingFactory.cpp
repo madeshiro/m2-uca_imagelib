@@ -104,7 +104,7 @@ namespace idl
         for (const auto& fileName : dataFileNames)
         {
             auto img = cv::imread(fileName, cv::IMREAD_COLOR);
-            img = ImagePreProcessor::process(img);
+            // img = ImagePreProcessor::process(img);
             _listOfProcess.emplace_back(ImageProcessing {std::move(img)});
         }
     }

@@ -24,8 +24,6 @@ int main()
 
         for (auto img : imgs)
         {
-            char windowTitle[60];
-            std::snprintf(windowTitle, 60, "Image #%d", i);
             cv::imshow("Image", img);
             if(cv::waitKey(3000) == 27){
                 return 0;
