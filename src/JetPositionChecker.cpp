@@ -9,16 +9,16 @@ namespace idl
         
         if (Species::advantis == iPlant.plantSpecies)
         {
-            tolerance = 20; // px
+            tolerance = 40; // px
             boundingBox.height += tolerance; // px
             boundingBox.width  += tolerance; // px
 
             boundingBox.x -= tolerance/2.0f;
             boundingBox.y -= tolerance/2.0f;
         }
-        
+
         // Check first if the jet is in the boundary box
-        if (iPlant.boundingBox.contains(iJet))
+        if (boundingBox.contains(iJet))
         {
             // Reposition mask using plant position
             int xPos = iPlant.position[0];
@@ -33,8 +33,8 @@ namespace idl
             {
                 for (int j = 0; j < tolerance && !isFound; j++)
                 {
-                    int dx = i ? 5 : tolerance/2 - i;
-                    int dy = j ? 5 : tolerance/2 - j;
+                    int dx = tolerance/2 - i;
+                    int dy = tolerance/2 - j;
                     isFound = iPlant.mask.at<bool>(cv::Point{relativeJet.x+dx, relativeJet.y+dy});       
                 }
             }
