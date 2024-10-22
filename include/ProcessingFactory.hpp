@@ -19,6 +19,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
 
 namespace idl
 {
@@ -29,7 +30,7 @@ namespace idl
         {
             friend class ProcessingFactory;
         protected:
-            ImageProcessing(cv::Mat&& iImage);
+            ImageProcessing(cv::Mat&& iImage, std::string&& nImage);
         public:
             ImageProcessing() = default;
 
@@ -54,7 +55,7 @@ namespace idl
              */
             cv::Mat getImageWithDetails() const;
             /**
-             * @return the original image with plants mask draw above.
+             * @return the original image with plants mask draw above
              */
             cv::Mat getImageWithMasks() const;
 
@@ -63,7 +64,12 @@ namespace idl
              * @see idl::LaserBehavior
              */
             LaserBehavior getLaserBehavior() const;
+
+            // @return the name of the image
+            std::string getImageName() const { return _nameImg; }
+
         private:
+            std::string _nameImg;
             cv::Mat _img;
             std::vector<Plant>  _plants;
             LineDetector*       _lineDetector = nullptr;    

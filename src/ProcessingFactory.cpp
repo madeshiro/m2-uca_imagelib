@@ -2,15 +2,15 @@
 
 namespace idl
 {
-    ProcessingFactory::ImageProcessing::ImageProcessing(cv::Mat&& iImage)
-        :   _img(std::move(iImage)), _plants(PlantDetector::detectPlants(_img)), 
+    ProcessingFactory::ImageProcessing::ImageProcessing(cv::Mat&& iImage, std::string&& nImage)
+        :   _nameImg(std::move(nImage)), _img(std::move(iImage)), _plants(PlantDetector::detectPlants(_img)), 
             _lineDetector(new LineDetector(_img)), 
             _jetChecker(new JetPositionChecker(_plants, *_lineDetector))
     {
     }
 
     ProcessingFactory::ImageProcessing::ImageProcessing(const ImageProcessing& iOther)
-        : _img(iOther._img.clone()), _plants(iOther._plants), 
+        : _nameImg(iOther._nameImg), _img(iOther._img.clone()), _plants(iOther._plants), 
           _lineDetector(new LineDetector(_img)),
           _jetChecker(new JetPositionChecker(_plants, *_lineDetector))
     {
@@ -22,9 +22,59 @@ namespace idl
         delete _jetChecker;
     }
 
-    void ProcessingFactory::ImageProcessing::write(std::ostream&) const 
+    /**
+     * Format a vector of 2D positions into a string
+     * like "(x1; y1)/ (x2; y2)/"
+     * @param vector of plant
+     * @return string representing 2D positions
+     */
+    std::string formatPositions(const std::vector<Plant>& plants) 
     {
-        // print to csv 
+        std::stringstream ssAdventis;
+        std::stringstream ssWheat;
+        for (const auto& p : plants) {
+            std::stringstream ss;
+            ss << "(" << p.center[0] << "; " << p.center[1] << ")/ ";
+
+            if(p.plantSpecies == Species::advantis)
+            {
+                ssAdventis << ss.str();
+            }
+            else if (p.plantSpecies == Species::wheat)
+            {
+                ssWheat << ss.str();
+            }
+        }
+        std::string result = ssAdventis.str() + ", " + ssWheat.str();
+
+        return result;
+    }
+
+    void ProcessingFactory::ImageProcessing::write(std::ostream& csvFile) const 
+    {
+        std::string plantPosStr = formatPositions(_plants);
+
+        //type of beahvior the laser 
+        std::string laserOnStr = "Unknown";
+        switch (_jetChecker->computeState()) {
+            case LaserBehavior::onNothing:
+                laserOnStr = "onNothing";
+                break;
+            case LaserBehavior::onAdventis:
+                laserOnStr = "onAdventis";
+                break;
+            case LaserBehavior::onWheat:
+                laserOnStr = "onWheat";
+                break;
+            default:
+                laserOnStr = "No laser";
+                break;
+        }
+        cv::Point intersectionLaser = _lineDetector->getIntersection();
+        csvFile << _nameImg << ", ("
+                << intersectionLaser.x << "; " << intersectionLaser.y << "), "
+                << laserOnStr << ", "
+                << "\"" << plantPosStr << "\"\n";
     }
 
     cv::Mat ProcessingFactory::ImageProcessing::getImage() const 
@@ -104,8 +154,15 @@ namespace idl
         for (const auto& fileName : dataFileNames)
         {
             auto img = cv::imread(fileName, cv::IMREAD_COLOR);
-            // img = ImagePreProcessor::process(img);
-            _listOfProcess.emplace_back(ImageProcessing {std::move(img)});
+            if (img.empty()) 
+            {
+                std::cerr << "Error: Could not load image " << fileName << std::endl;
+                continue; // Skip to the next file
+            }
+            //img = ImagePreProcessor::process(img);
+            std::string fileNameStr = fileName.substr(fileName.find_last_of("/") + 1);;
+            ImageProcessing imgProce = ImageProcessing {std::move(img), std::move(fileNameStr)};
+            _listOfProcess.emplace_back(imgProce);
         }
     }
 
