@@ -16,13 +16,13 @@ Ce projet d’étude a pour objectif d'appliquer les connaissances acquises dans
  #### Compiler le projet :
 ```bash
     cmake ..
-    make
+    make -j
 ```
 
 #### Exécuter l'application :
 L'exécutable c'est : ``` CVFORAGRICULTURE ```. il sera créé dans le répertoire build.
 
-Pour lancer le projet faire par exemple ``` CVFORAGRICULTURE ../data```
+Pour lancer le projet faire par exemple ``` ./CVFORAGRICULTURE ../data```
 
 L'application récupère les images dans le répertoire mis en argument et génère un répertoire contenant touts les masques et les détails des images, ainsi qu'un fichier CSV avec les résultats.
 
