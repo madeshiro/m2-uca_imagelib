@@ -44,6 +44,26 @@ namespace idl
                 cv::Point pt = {static_cast<int>(plant.center[0]), static_cast<int>(plant.center[1])};
                 cv::circle(detailedImage, pt, 5, cv::Scalar(255,0,0), -1);
             }
+
+            const char* laserState = nullptr;
+            switch (getLaserBehavior())
+            {
+            case LaserBehavior::onAdventis:
+                laserState = "on adventis";
+                break;
+            case LaserBehavior::onWheat:
+                laserState = "on wheat";
+                break;
+            case LaserBehavior::onNothing:
+                laserState = "on ground";
+                break;
+            default:
+                laserState = "not detected";
+                break;
+            }
+
+            cv::putText(detailedImage, laserState, {10,30}, cv::FONT_HERSHEY_SIMPLEX,
+            1, cv::Scalar(255,255,255), 2, cv::LINE_AA);
         }
 
         return detailedImage;
@@ -71,6 +91,11 @@ namespace idl
         return imageWithMasks;
     }
 
+    LaserBehavior ProcessingFactory::ImageProcessing::getLaserBehavior() const 
+    {
+        return _jetChecker->computeState();
+    }
+
     ProcessingFactory::ProcessingFactory(const std::string& iImgDirectory)
     {
         cv::String path = iImgDirectory + "/*.png";
@@ -79,7 +104,7 @@ namespace idl
         for (const auto& fileName : dataFileNames)
         {
             auto img = cv::imread(fileName, cv::IMREAD_COLOR);
-            img = ImagePreProcessor::process(img);
+            // img = ImagePreProcessor::process(img);
             _listOfProcess.emplace_back(ImageProcessing {std::move(img)});
         }
     }

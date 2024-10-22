@@ -4,6 +4,19 @@ namespace idl
 {
     LaserBehavior JetPositionChecker::isOnPlant(const Plant& iPlant, const cv::Point& iJet)
     {
+        int tolerance = 0; // px
+        auto boundingBox = iPlant.boundingBox;
+        
+        if (Species::advantis == iPlant.plantSpecies)
+        {
+            tolerance = 10; // px
+            boundingBox.height += 10; // px
+            boundingBox.width  += 10; // px
+
+            boundingBox.x -= 5;
+            boundingBox.y -= 5;
+        }
+        
         // Check first if the jet is in the boundary box
         if (iPlant.boundingBox.contains(iJet))
         {
@@ -14,7 +27,19 @@ namespace idl
             // Reposition jet relatively to the mask
             cv::Point relativeJet = {iJet.x - xPos, iJet.y - yPos};
 
-            if (iPlant.mask.at<bool>(relativeJet))
+            bool isFound = iPlant.mask.at<bool>(relativeJet);
+            
+            for (int i = 0; i < tolerance && !isFound; i++)
+            {
+                for (int j = 0; j < tolerance && !isFound; j++)
+                {
+                    int dx = i ? 5 : tolerance/2 - i;
+                    int dy = j ? 5 : tolerance/2 - j;
+                    isFound = iPlant.mask.at<bool>(cv::Point{relativeJet.x+dx, relativeJet.y+dy});       
+                }
+            }
+
+            if (isFound)
             {
                 // Retrieve the laser behavior according to the targeted plant
                 switch (iPlant.plantSpecies)

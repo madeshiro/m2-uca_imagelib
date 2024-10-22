@@ -57,11 +57,17 @@ namespace idl
              * @return the original image with plants mask draw above.
              */
             cv::Mat getImageWithMasks() const;
+
+            /**
+             * @return the current laser state. 
+             * @see idl::LaserBehavior
+             */
+            LaserBehavior getLaserBehavior() const;
         private:
             cv::Mat _img;
-            std::vector<Plant> _plants;
-            LineDetector* _lineDetector     = nullptr;    
-            JetPositionChecker* _jetChecker = nullptr;
+            std::vector<Plant>  _plants;
+            LineDetector*       _lineDetector = nullptr;    
+            JetPositionChecker* _jetChecker   = nullptr;
         };
     private:
         ProcessingFactory(const ProcessingFactory&) = delete;
