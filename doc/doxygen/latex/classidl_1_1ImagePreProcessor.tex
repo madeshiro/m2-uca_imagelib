@@ -1,0 +1,48 @@
+\doxysection{idl\+::Image\+Pre\+Processor Class Reference}
+\hypertarget{classidl_1_1ImagePreProcessor}{}\label{classidl_1_1ImagePreProcessor}\index{idl::ImagePreProcessor@{idl::ImagePreProcessor}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static cv\+::\+Mat \mbox{\hyperlink{classidl_1_1ImagePreProcessor_a3766071051ed00d10a78cf04abe52159}{process}} (const cv\+::\+Mat \&img, Preprocessing\+Type type)
+\item 
+static cv\+::\+Mat \mbox{\hyperlink{classidl_1_1ImagePreProcessor_a7ee2b074c31a7f7d0e7faf03269cc3e8}{process}} (const cv\+::\+Mat \&img)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classidl_1_1ImagePreProcessor_a7ee2b074c31a7f7d0e7faf03269cc3e8}\index{idl::ImagePreProcessor@{idl::ImagePreProcessor}!process@{process}}
+\index{process@{process}!idl::ImagePreProcessor@{idl::ImagePreProcessor}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classidl_1_1ImagePreProcessor_a7ee2b074c31a7f7d0e7faf03269cc3e8} 
+cv\+::\+Mat idl\+::\+Image\+Pre\+Processor\+::process (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{img}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Apply a predefined series of preprocessing steps to an image 
+\begin{DoxyParams}{Parameters}
+{\em img} & the input image to process \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the image after 
+\end{DoxyReturn}
+\Hypertarget{classidl_1_1ImagePreProcessor_a3766071051ed00d10a78cf04abe52159}\index{idl::ImagePreProcessor@{idl::ImagePreProcessor}!process@{process}}
+\index{process@{process}!idl::ImagePreProcessor@{idl::ImagePreProcessor}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classidl_1_1ImagePreProcessor_a3766071051ed00d10a78cf04abe52159} 
+cv\+::\+Mat idl\+::\+Image\+Pre\+Processor\+::process (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{img}{, }\item[{Preprocessing\+Type}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Apply a specified preprocessing operation to an image 
+\begin{DoxyParams}{Parameters}
+{\em img} & the input \\
+\hline
+{\em type} & the preprocessing operation to apply (Gaussian\+Blur, Thresholding) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the image 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Image\+Pre\+Processor.\+hpp\item 
+src/Image\+Pre\+Processor.\+cpp\end{DoxyCompactItemize}

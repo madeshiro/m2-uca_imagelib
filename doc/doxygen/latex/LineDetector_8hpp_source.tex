@@ -1,0 +1,68 @@
+\doxysection{Line\+Detector.\+hpp}
+\hypertarget{LineDetector_8hpp_source}{}\label{LineDetector_8hpp_source}\index{include/LineDetector.hpp@{include/LineDetector.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ File:\ \ \ \ \ \ \ \ LineDetector.hpp}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Description:\ Definition\ of\ LineDetector\ (OpenCV\ hough\ transformation)}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ File\ generated\ on\ Oct\ 2024\ by\ Rin\ Baudelet}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ LINE\_DETECTOR\_HPP}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ LINE\_DETECTOR\_HPP}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <opencv2/opencv.hpp>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }idl\ \textcolor{comment}{//\ Images\ Development\ Library\ }}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ Forward\ declaration}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{class\ }ProcessingFactory;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classidl_1_1LineDetector}{LineDetector}}\ }
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Disallow\ copy}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1LineDetector}{LineDetector}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classidl_1_1LineDetector}{LineDetector}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1LineDetector}{LineDetector}}\&\ operator\ =(\textcolor{keyword}{const}\ \mbox{\hyperlink{classidl_1_1LineDetector}{LineDetector}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Disallow\ move}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1LineDetector}{LineDetector}}(\mbox{\hyperlink{classidl_1_1LineDetector}{LineDetector}}\&\&)\ \textcolor{keyword}{noexcept}\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1LineDetector}{LineDetector}}\&\ operator\ =(\mbox{\hyperlink{classidl_1_1LineDetector}{LineDetector}}\&\&)\ \textcolor{keyword}{noexcept}\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1LineDetector}{\string~LineDetector}}()\ \textcolor{keyword}{noexcept}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00036\ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1LineDetector}{LineDetector}}(\textcolor{keyword}{const}\ cv::Mat\&\ iImgSrc);}
+\DoxyCodeLine{00042\ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ std::vector<cv::Vec4i>\ \mbox{\hyperlink{classidl_1_1LineDetector_afacb87d4c42bf28830b0520c95b3bddf}{getCurLines}}()\ \textcolor{keyword}{const};\ \ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ std::vector<cv::Point>\ \mbox{\hyperlink{classidl_1_1LineDetector_a20b5d5af1ca86abdfb21dd8510bd90a3}{getIntersections}}()\ \textcolor{keyword}{const};\ \ \ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ cv::Point\ \mbox{\hyperlink{classidl_1_1LineDetector_ac0a9a65553662c10da0dfbf255d0c7f6}{getIntersection}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classidl_1_1LineDetector_a1621e513452e14029cedfe6ac6f17a48}{hasIntersection}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ cv::Mat\ \mbox{\hyperlink{classidl_1_1LineDetector_a9394921b4d67922c6d648f455f3f7596}{drawResults}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classidl_1_1LineDetector_a1b5bd66e8ab8b88003fae8d2c3dbd812}{showResults}}()\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Internal\ functions}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ cv::Vec3f\ toLinearEquation(\textcolor{keyword}{const}\ cv::Vec4i\&\ iLine);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ computeAngle(\textcolor{keyword}{const}\ cv::Vec4i\&\ iLine1,\ \textcolor{keyword}{const}\ cv::Vec4i\&\ iLine2);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ cv::Mat\ filterLinesColor(\textcolor{keyword}{const}\ cv::Mat\&\ iImg);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Attributes}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ cv::Mat\&\ \_img;\ \textcolor{comment}{//<\ reference\ image\ to\ analyze}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Factory}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classidl_1_1ProcessingFactory}{idl::ProcessingFactory}};}
+\DoxyCodeLine{00105\ \ \ \ \ \};}
+\DoxyCodeLine{00106\ \}\ \textcolor{comment}{//\ namespace\ idl}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LINE\_DETECTOR\_HPP}}
+
+\end{DoxyCode}

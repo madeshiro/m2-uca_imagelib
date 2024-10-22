@@ -1,0 +1,78 @@
+\doxysection{idl\+::Jet\+Position\+Checker Class Reference}
+\hypertarget{classidl_1_1JetPositionChecker}{}\label{classidl_1_1JetPositionChecker}\index{idl::JetPositionChecker@{idl::JetPositionChecker}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classidl_1_1JetPositionChecker_a4283df237c00bfaa7e33c785dce9f746}\label{classidl_1_1JetPositionChecker_a4283df237c00bfaa7e33c785dce9f746} 
+{\bfseries Jet\+Position\+Checker} (const \mbox{\hyperlink{classidl_1_1JetPositionChecker}{Jet\+Position\+Checker}} \&)=delete
+\item 
+\Hypertarget{classidl_1_1JetPositionChecker_a0334d66e8e8e4c5a1a47ab5bda6756fa}\label{classidl_1_1JetPositionChecker_a0334d66e8e8e4c5a1a47ab5bda6756fa} 
+\mbox{\hyperlink{classidl_1_1JetPositionChecker}{Jet\+Position\+Checker}} \& {\bfseries operator=} (const \mbox{\hyperlink{classidl_1_1JetPositionChecker}{Jet\+Position\+Checker}} \&)=delete
+\item 
+\Hypertarget{classidl_1_1JetPositionChecker_a6d86cc3162b3836ec3a5f64660f73a37}\label{classidl_1_1JetPositionChecker_a6d86cc3162b3836ec3a5f64660f73a37} 
+{\bfseries Jet\+Position\+Checker} (\mbox{\hyperlink{classidl_1_1JetPositionChecker}{Jet\+Position\+Checker}} \&\&) noexcept=delete
+\item 
+\Hypertarget{classidl_1_1JetPositionChecker_a37be93f830a376520c8ddb8dc924d714}\label{classidl_1_1JetPositionChecker_a37be93f830a376520c8ddb8dc924d714} 
+\mbox{\hyperlink{classidl_1_1JetPositionChecker}{Jet\+Position\+Checker}} \& {\bfseries operator=} (\mbox{\hyperlink{classidl_1_1JetPositionChecker}{Jet\+Position\+Checker}} \&\&) noexcept=delete
+\item 
+\mbox{\hyperlink{classidl_1_1JetPositionChecker_a338c76f4e4fd9e6ac9dcec3ff0280e1c}{Jet\+Position\+Checker}} (const std\+::vector$<$ \mbox{\hyperlink{classidl_1_1Plant}{Plant}} $>$ \&i\+Plants, const \mbox{\hyperlink{classidl_1_1LineDetector}{Line\+Detector}} \&i\+Line\+Detector)
+\item 
+Laser\+Behavior \mbox{\hyperlink{classidl_1_1JetPositionChecker_a55cd78c66c47b85af88dfc607109cde7}{compute\+State}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Laser\+Behavior \mbox{\hyperlink{classidl_1_1JetPositionChecker_a78b26056584c090c0608933a21c4b3b3}{is\+On\+Plant}} (const \mbox{\hyperlink{classidl_1_1Plant}{Plant}} \&i\+Plant, const cv\+::\+Point \&i\+Jet)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classidl_1_1JetPositionChecker_a338c76f4e4fd9e6ac9dcec3ff0280e1c}\index{idl::JetPositionChecker@{idl::JetPositionChecker}!JetPositionChecker@{JetPositionChecker}}
+\index{JetPositionChecker@{JetPositionChecker}!idl::JetPositionChecker@{idl::JetPositionChecker}}
+\doxysubsubsection{\texorpdfstring{JetPositionChecker()}{JetPositionChecker()}}
+{\footnotesize\ttfamily \label{classidl_1_1JetPositionChecker_a338c76f4e4fd9e6ac9dcec3ff0280e1c} 
+idl\+::\+Jet\+Position\+Checker\+::\+Jet\+Position\+Checker (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classidl_1_1Plant}{Plant}} $>$ \&}]{i\+Plants}{, }\item[{const \mbox{\hyperlink{classidl_1_1LineDetector}{Line\+Detector}} \&}]{i\+Line\+Detector}{}\end{DoxyParamCaption})}
+
+Create a \doxylink{classidl_1_1JetPositionChecker}{Jet\+Position\+Checker} from the line detector and plants. 
+\begin{DoxyParams}{Parameters}
+{\em i\+Plants} & a list of plants from the image \\
+\hline
+{\em i\+Line\+Detector} & the image\textquotesingle{}s line detector \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classidl_1_1JetPositionChecker_a55cd78c66c47b85af88dfc607109cde7}\index{idl::JetPositionChecker@{idl::JetPositionChecker}!computeState@{computeState}}
+\index{computeState@{computeState}!idl::JetPositionChecker@{idl::JetPositionChecker}}
+\doxysubsubsection{\texorpdfstring{computeState()}{computeState()}}
+{\footnotesize\ttfamily \label{classidl_1_1JetPositionChecker_a55cd78c66c47b85af88dfc607109cde7} 
+Laser\+Behavior idl\+::\+Jet\+Position\+Checker\+::compute\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+Compute the laser behaviour\textquotesingle{}s state. \begin{DoxyReturn}{Returns}
+the current laser state according to its position. 
+\end{DoxyReturn}
+\Hypertarget{classidl_1_1JetPositionChecker_a78b26056584c090c0608933a21c4b3b3}\index{idl::JetPositionChecker@{idl::JetPositionChecker}!isOnPlant@{isOnPlant}}
+\index{isOnPlant@{isOnPlant}!idl::JetPositionChecker@{idl::JetPositionChecker}}
+\doxysubsubsection{\texorpdfstring{isOnPlant()}{isOnPlant()}}
+{\footnotesize\ttfamily \label{classidl_1_1JetPositionChecker_a78b26056584c090c0608933a21c4b3b3} 
+Laser\+Behavior idl\+::\+Jet\+Position\+Checker\+::is\+On\+Plant (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classidl_1_1Plant}{Plant}} \&}]{i\+Plant}{, }\item[{const cv\+::\+Point \&}]{i\+Jet}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Retrieve the laser behavior according to a plant using its bounding box and its mask.
+
+
+\begin{DoxyParams}{Parameters}
+{\em i\+Plant} & the plant to test with the laser \\
+\hline
+{\em i\+Jet} & the laser location point\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the laser behavior relatively of the provided plant. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Jet\+Position\+Checker.\+hpp\item 
+src/Jet\+Position\+Checker.\+cpp\end{DoxyCompactItemize}

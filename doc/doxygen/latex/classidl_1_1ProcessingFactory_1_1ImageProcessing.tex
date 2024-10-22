@@ -1,0 +1,90 @@
+\doxysection{idl\+::Processing\+Factory\+::Image\+Processing Class Reference}
+\hypertarget{classidl_1_1ProcessingFactory_1_1ImageProcessing}{}\label{classidl_1_1ProcessingFactory_1_1ImageProcessing}\index{idl::ProcessingFactory::ImageProcessing@{idl::ProcessingFactory::ImageProcessing}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classidl_1_1ProcessingFactory_1_1ImageProcessing_a74de61ba97d8d7cf2e3380528a498b1d}\label{classidl_1_1ProcessingFactory_1_1ImageProcessing_a74de61ba97d8d7cf2e3380528a498b1d} 
+{\bfseries Image\+Processing} (const \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing}{Image\+Processing}} \&)
+\item 
+\Hypertarget{classidl_1_1ProcessingFactory_1_1ImageProcessing_af2dea45cb87b18979ea5352f2d703640}\label{classidl_1_1ProcessingFactory_1_1ImageProcessing_af2dea45cb87b18979ea5352f2d703640} 
+\mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing}{Image\+Processing}} \& {\bfseries operator=} (const \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing}{Image\+Processing}} \&)
+\item 
+void \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing_a9e851c6415722620a3d0fa85eb6422b7}{write}} (std\+::ostream \&) const
+\item 
+cv\+::\+Mat \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing_a8449e9296631d30d8990fed220e87dbf}{get\+Image}} () const
+\item 
+cv\+::\+Mat \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing_a58928dc3e501594b204b7238d4091a6a}{get\+Image\+With\+Details}} () const
+\item 
+cv\+::\+Mat \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing_a2e0a5472e4c37a67a4ee9eefa76a63e3}{get\+Image\+With\+Masks}} () const
+\item 
+Laser\+Behavior \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing_acc829c2a7e1c556bbfa15ea08d3cefba}{get\+Laser\+Behavior}} () const
+\item 
+\Hypertarget{classidl_1_1ProcessingFactory_1_1ImageProcessing_a351f813a2cbd2d32a25fe5c66cb05420}\label{classidl_1_1ProcessingFactory_1_1ImageProcessing_a351f813a2cbd2d32a25fe5c66cb05420} 
+std\+::string {\bfseries get\+Image\+Name} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classidl_1_1ProcessingFactory_1_1ImageProcessing_afeacde58a3e7cea26af3f89a7ae988ca}\label{classidl_1_1ProcessingFactory_1_1ImageProcessing_afeacde58a3e7cea26af3f89a7ae988ca} 
+{\bfseries Image\+Processing} (cv\+::\+Mat \&\&i\+Image, std\+::string \&\&n\+Image)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classidl_1_1ProcessingFactory_1_1ImageProcessing_a60a29ba1132171e5a1b61308f1cd4561}\label{classidl_1_1ProcessingFactory_1_1ImageProcessing_a60a29ba1132171e5a1b61308f1cd4561} 
+class {\bfseries Processing\+Factory}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classidl_1_1ProcessingFactory_1_1ImageProcessing_a8449e9296631d30d8990fed220e87dbf}\index{idl::ProcessingFactory::ImageProcessing@{idl::ProcessingFactory::ImageProcessing}!getImage@{getImage}}
+\index{getImage@{getImage}!idl::ProcessingFactory::ImageProcessing@{idl::ProcessingFactory::ImageProcessing}}
+\doxysubsubsection{\texorpdfstring{getImage()}{getImage()}}
+{\footnotesize\ttfamily \label{classidl_1_1ProcessingFactory_1_1ImageProcessing_a8449e9296631d30d8990fed220e87dbf} 
+cv\+::\+Mat idl\+::\+Processing\+Factory\+::\+Image\+Processing\+::get\+Image (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the original image 
+\end{DoxyReturn}
+\Hypertarget{classidl_1_1ProcessingFactory_1_1ImageProcessing_a58928dc3e501594b204b7238d4091a6a}\index{idl::ProcessingFactory::ImageProcessing@{idl::ProcessingFactory::ImageProcessing}!getImageWithDetails@{getImageWithDetails}}
+\index{getImageWithDetails@{getImageWithDetails}!idl::ProcessingFactory::ImageProcessing@{idl::ProcessingFactory::ImageProcessing}}
+\doxysubsubsection{\texorpdfstring{getImageWithDetails()}{getImageWithDetails()}}
+{\footnotesize\ttfamily \label{classidl_1_1ProcessingFactory_1_1ImageProcessing_a58928dc3e501594b204b7238d4091a6a} 
+cv\+::\+Mat idl\+::\+Processing\+Factory\+::\+Image\+Processing\+::get\+Image\+With\+Details (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the original image with the detected laser and plants gravity center. 
+\end{DoxyReturn}
+\Hypertarget{classidl_1_1ProcessingFactory_1_1ImageProcessing_a2e0a5472e4c37a67a4ee9eefa76a63e3}\index{idl::ProcessingFactory::ImageProcessing@{idl::ProcessingFactory::ImageProcessing}!getImageWithMasks@{getImageWithMasks}}
+\index{getImageWithMasks@{getImageWithMasks}!idl::ProcessingFactory::ImageProcessing@{idl::ProcessingFactory::ImageProcessing}}
+\doxysubsubsection{\texorpdfstring{getImageWithMasks()}{getImageWithMasks()}}
+{\footnotesize\ttfamily \label{classidl_1_1ProcessingFactory_1_1ImageProcessing_a2e0a5472e4c37a67a4ee9eefa76a63e3} 
+cv\+::\+Mat idl\+::\+Processing\+Factory\+::\+Image\+Processing\+::get\+Image\+With\+Masks (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the original image with plants mask draw above 
+\end{DoxyReturn}
+\Hypertarget{classidl_1_1ProcessingFactory_1_1ImageProcessing_acc829c2a7e1c556bbfa15ea08d3cefba}\index{idl::ProcessingFactory::ImageProcessing@{idl::ProcessingFactory::ImageProcessing}!getLaserBehavior@{getLaserBehavior}}
+\index{getLaserBehavior@{getLaserBehavior}!idl::ProcessingFactory::ImageProcessing@{idl::ProcessingFactory::ImageProcessing}}
+\doxysubsubsection{\texorpdfstring{getLaserBehavior()}{getLaserBehavior()}}
+{\footnotesize\ttfamily \label{classidl_1_1ProcessingFactory_1_1ImageProcessing_acc829c2a7e1c556bbfa15ea08d3cefba} 
+Laser\+Behavior idl\+::\+Processing\+Factory\+::\+Image\+Processing\+::get\+Laser\+Behavior (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the current laser state. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+idl\+::\+Laser\+Behavior 
+\end{DoxySeeAlso}
+\Hypertarget{classidl_1_1ProcessingFactory_1_1ImageProcessing_a9e851c6415722620a3d0fa85eb6422b7}\index{idl::ProcessingFactory::ImageProcessing@{idl::ProcessingFactory::ImageProcessing}!write@{write}}
+\index{write@{write}!idl::ProcessingFactory::ImageProcessing@{idl::ProcessingFactory::ImageProcessing}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{classidl_1_1ProcessingFactory_1_1ImageProcessing_a9e851c6415722620a3d0fa85eb6422b7} 
+void idl\+::\+Processing\+Factory\+::\+Image\+Processing\+::write (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{csv\+File}{}\end{DoxyParamCaption}) const}
+
+Write results to CSV in an output stream. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Processing\+Factory.\+hpp\item 
+src/Processing\+Factory.\+cpp\end{DoxyCompactItemize}

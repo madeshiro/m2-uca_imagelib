@@ -1,0 +1,85 @@
+\doxysection{Processing\+Factory.\+hpp}
+\hypertarget{ProcessingFactory_8hpp_source}{}\label{ProcessingFactory_8hpp_source}\index{include/ProcessingFactory.hpp@{include/ProcessingFactory.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ File:\ \ \ \ \ \ \ \ LineDetector.hpp}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Description:\ Definition\ of\ LineDetector\ (OpenCV\ hough\ transformation)}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ File\ generated\ on\ Oct\ 2024\ by\ Rin\ Baudelet}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ PROCESSING\_FACTORY\_HPP}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ PROCESSING\_FACTORY\_HPP}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}LineDetector.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}PlantDetector.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}ImagePreProcessor.hpp"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}JetPositionChecker.hpp"{}}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ OpenCV}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <opencv2/opencv.hpp>}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ STL}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }idl}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classidl_1_1ProcessingFactory}{ProcessingFactory}}\ }
+\DoxyCodeLine{00027\ \ \ \ \ \{\ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing}{ImageProcessing}}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classidl_1_1ProcessingFactory}{ProcessingFactory}};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing}{ImageProcessing}}(cv::Mat\&\&\ iImage,\ std::string\&\&\ nImage);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing}{ImageProcessing}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing}{ImageProcessing}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing}{ImageProcessing}}\&);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing}{ImageProcessing}}\&\ operator\ =(\textcolor{keyword}{const}\ \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing}{ImageProcessing}}\&);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing}{\string~ImageProcessing}}();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing_a9e851c6415722620a3d0fa85eb6422b7}{write}}(std::ostream\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ cv::Mat\ \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing_a8449e9296631d30d8990fed220e87dbf}{getImage}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ cv::Mat\ \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing_a58928dc3e501594b204b7238d4091a6a}{getImageWithDetails}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ cv::Mat\ \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing_a2e0a5472e4c37a67a4ee9eefa76a63e3}{getImageWithMasks}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ LaserBehavior\ \mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing_acc829c2a7e1c556bbfa15ea08d3cefba}{getLaserBehavior}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ @return\ the\ name\ of\ the\ image}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ getImageName()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_nameImg;\ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \_nameImg;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ cv::Mat\ \_img;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Plant>\ \ \_plants;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1LineDetector}{LineDetector}}*\ \ \ \ \ \ \ \_lineDetector\ =\ \textcolor{keyword}{nullptr};\ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1JetPositionChecker}{JetPositionChecker}}*\ \_jetChecker\ \ \ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1ProcessingFactory}{ProcessingFactory}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classidl_1_1ProcessingFactory}{ProcessingFactory}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1ProcessingFactory}{ProcessingFactory}}(\mbox{\hyperlink{classidl_1_1ProcessingFactory}{ProcessingFactory}}\&\&)\ noexcept\ =\ delete;}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1ProcessingFactory}{ProcessingFactory}}\&\ operator\ =(const\ \mbox{\hyperlink{classidl_1_1ProcessingFactory}{ProcessingFactory}}\&)\ =\ delete;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1ProcessingFactory}{ProcessingFactory}}\&\ operator\ =(\mbox{\hyperlink{classidl_1_1ProcessingFactory}{ProcessingFactory}}\&\&)\ noexcept\ =\ delete;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ public:}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classidl_1_1ProcessingFactory}{ProcessingFactory}}(const\ std::\textcolor{keywordtype}{string}\&\ iImgDirectory);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ constexpr\ const\ std::vector<\mbox{\hyperlink{classidl_1_1ProcessingFactory_1_1ImageProcessing}{ImageProcessing}}>\&\ \mbox{\hyperlink{classidl_1_1ProcessingFactory_aa08331a5686a25e3060f5eaa9cd6e773}{listProcessing}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00097\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{\ \textcolor{keywordflow}{return}\ \_listOfProcess;\ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ ImageProcessing\&\ operator[](\textcolor{keywordtype}{size\_t}\ index)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ std::vector<ImageProcessing>\ \_listOfProcess;}
+\DoxyCodeLine{00102\ \ \ \ \ \};}
+\DoxyCodeLine{00103\ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PROCESSING\_FACTORY\_HPP}}
+
+\end{DoxyCode}
