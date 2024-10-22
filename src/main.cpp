@@ -25,7 +25,7 @@ int main()
         for (auto img : imgs)
         {
             cv::imshow("Image", img);
-            if(cv::waitKey(3000) == 27){
+            if(cv::waitKey(1000) == 27){
                 return 0;
             }
         }

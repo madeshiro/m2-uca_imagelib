@@ -123,7 +123,7 @@ namespace idl
         imgNew = ImagePreProcessor::applyHistogramEqualization(imgNew);
         */
 
-        imgNew = ImagePreProcessor::applyNoiseCorrection(imgNew, 7);
+        //imgNew = ImagePreProcessor::applyNoiseCorrection(imgNew, 7);
 
         return imgNew;                                                
     }
