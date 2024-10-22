@@ -9,12 +9,12 @@ namespace idl
         
         if (Species::advantis == iPlant.plantSpecies)
         {
-            tolerance = 10; // px
-            boundingBox.height += 10; // px
-            boundingBox.width  += 10; // px
+            tolerance = 20; // px
+            boundingBox.height += tolerance; // px
+            boundingBox.width  += tolerance; // px
 
-            boundingBox.x -= 5;
-            boundingBox.y -= 5;
+            boundingBox.x -= tolerance/2.0f;
+            boundingBox.y -= tolerance/2.0f;
         }
         
         // Check first if the jet is in the boundary box
