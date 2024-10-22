@@ -61,10 +61,10 @@ namespace idl
                 laserOnStr = "onNothing";
                 break;
             case LaserBehavior::onAdventis:
-                laserOnStr = "onWheat";
+                laserOnStr = "onAdventis";
                 break;
             case LaserBehavior::onWheat:
-                laserOnStr = "onAdventis";
+                laserOnStr = "onWheat";
                 break;
             default:
                 laserOnStr = "No laser";
